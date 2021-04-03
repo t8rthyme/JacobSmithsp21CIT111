@@ -1,0 +1,81 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package unitConverterProject;
+import java.util.Scanner;
+
+/**
+ *
+ * @author jacob
+ */
+public class unitConvert {
+    public static void main(String[] args) {
+        System.out.println("Welcome Metric Conversion for Americans: ");
+        
+        userVariable();
+                
+    }// closes main
+    
+    public static void userVariable(){
+        System.out.println("Option 1: Meter ->Yard\nOption2: Kilogram -> Pound"
+                + "\nOption3: KMPH -> MPH");
+        Scanner userChoice = new Scanner(System.in);
+        int choice = userChoice.nextInt();
+        
+    switch(choice){
+        case 1: distance();
+        break;
+        case 2: weight();
+        break;
+        case 3: speed();
+        break;
+    }    
+    } // closes userVariable method
+    
+    public static void distance(){
+        System.out.println("Enter Meters to get Yards");
+                Scanner input = new Scanner(System.in);
+        double meters = input.nextDouble();
+        double yards = meters*1.094;
+            System.out.println(yards+" yards");
+            again();
+        
+        
+    }// closes distance method
+    
+    public static void weight(){
+        System.out.println("Enter Kilograms to get Pounds");
+                Scanner input = new Scanner(System.in);
+        double kilogram = input.nextDouble();
+        double pound = (kilogram*2.205);
+            System.out.println(pound+" lbs.");
+            again();
+        
+    }// closes weight method
+    
+    public static void speed(){
+        System.out.println("Enter Kmph to get Mph");
+                Scanner input = new Scanner(System.in);
+        double kmph = input.nextDouble();
+        double mph = (kmph*.621);
+            System.out.println(mph+" Mph");
+            again();
+    } // closes speed method
+            
+    public static void again(){
+    System.out.println("Would you like to try another conversion?");
+        Scanner goAgain = new Scanner(System.in);
+        String passGo = goAgain.nextLine();
+        if (passGo.equalsIgnoreCase("yes")){
+            userVariable();
+        } //closes if    
+        } // closes again
+    
+
+        
+    // closes speed method
+    
+}// closes class
+
