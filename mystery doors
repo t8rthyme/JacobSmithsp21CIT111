@@ -1,0 +1,140 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+        
+package mysterDoorProject;
+import java.util.Scanner;
+/**
+ *
+ * @author jacob
+ */
+public class MysteryDoors {
+    
+public static void main(String[] args){
+        
+        System.out.println("        WELCOME TO THE MYSTERY HALLWAY");
+        System.out.println("----------------Feelin Lucky?---------------\n");
+choice();}
+public static void choice(){
+        System.out.println("            1,2,3 What will it be?\n");
+        System.out.println(
+                  "***********      ***********     ***********\n"
+                + "**     ****      *        **     *        **\n"
+                + "*  **  ****      ********  *     *******   *\n"
+                + "*****  ****      ********  *     ********  *\n"
+                + "*****  ****      *******  **     *******   *\n"
+                + "*****  ****      ******  ***     *        **\n"
+                + "*****  ****      *****  ****     *         *\n"
+                + "*****  ****      ****  *****     *******   *\n"
+                + "*****  ****      ***  ******     ********  *\n"
+                + "*****  ****      **  *******     *******   *\n"
+                + "***      **      *         *     *        **\n"
+                + "***********      ***********     ***********");
+Scanner doorInput = new Scanner(System.in);        
+int input = doorInput.nextInt();
+
+switch(input){
+    case 1: door1(); 
+        System.out.println("");
+    break;
+    
+    case 2:door2();
+    System.out.println("");
+    break;
+    
+    case 3: door3();
+        System.out.println("");
+    break;
+    }
+}// closes main
+
+public static void door1(){
+        bigOleNumber();
+    
+}//closes door1
+
+public static void door2(){
+        disneyAge();
+    
+}//closes door2
+
+public static void door3(){
+        broken();
+    
+}//closes door3
+
+public static void bigOleNumber(){//will generate large number
+        System.out.println("You have entered the number \"generator\"!\n");
+        
+        System.out.println("How old are you in years?\n");
+    Scanner ageGenerator = new Scanner(System.in);
+int age = ageGenerator.nextInt();
+        System.out.println(age);
+
+        System.out.println("How tall are you in cm\n Whole numbers only ");        
+    Scanner heightCM = new Scanner(System.in);
+int height = heightCM.nextInt();
+        System.out.println(height);
+        
+        System.out.println("How many open tabs & windows do you currently have open?");
+    Scanner tabs = new Scanner(System.in);
+int tabsandwindows = tabs.nextInt();
+        System.out.println(tabsandwindows);
+
+        System.out.println("Enter your zip code");
+    Scanner zipCode = new Scanner(System.in);
+int zip = zipCode.nextInt();
+        System.out.println(zip);
+
+        System.out.println("How many pets do you have?");
+    Scanner pets = new Scanner(System.in);
+int manyPets = pets.nextInt();
+        System.out.println(manyPets);
+
+        System.out.println("Beedo Beedo Beedo Beedo Beedo Beedo Beedo\n");
+int numberGen = (age*height*tabsandwindows*zip+manyPets);
+        System.out.println(numberGen);
+}// closes bigOleNumber
+
+public static void disneyAge(){//will calculate user's Disney Age
+        System.out.println("Welcome to the Disney age generator!\n");
+        System.out.println("Enter your age: ");
+    Scanner dAge = new Scanner(System.in);
+int dage = dAge.nextInt();
+        int disneyAge = String.valueOf(dage).chars().map(Character::getNumericValue).sum();
+        System.out.println("When in Disney your age becomes " + disneyAge);
+        
+}// closes disneyAge
+
+public static void broken(){//will appear to break program
+                           //program ends blaming user for fatal error
+       System.out.println("*Crack* *Crack*");
+       System.out.println("Door seems to be broken");
+       System.out.println("What do you want to do?");
+       System.out.println("1: Try Knob Again 2: Hit it with something"
+                            + " 3: Try another door");
+    Scanner brokenDoor = new Scanner(System.in);
+    int door = brokenDoor.nextInt();
+    
+switch(door){
+case 1:System.out.println("*Crack* **SCREAMS**");
+       System.out.println("Two zombies beeak through and eat you.");
+       System.out.println("Game Over");
+break;
+    
+case 2:System.out.println("ZOMBIES!!!!\n Quick grab that axe!");
+       System.out.println("Whew! you made quick work of them!");
+break;
+
+case 3: choice();
+    
+} // closes door switch                            
+} // closes broken
+
+
+
+}// closes class
