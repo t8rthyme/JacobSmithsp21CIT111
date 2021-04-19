@@ -1,0 +1,360 @@
+package slowJamsLineup;
+
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+/**
+ * @author jacob
+ **/
+public class SlowJams_Lineup {
+            
+    public  static void main (String[] args){
+        System.out.println("Welcome to Slow Jams 2021 Lineup Generator");
+        
+     createLineup();
+            } // closes main method
+    
+        
+    public static void createLineup(){   
+    ArrayList<SoftballPlayer> TeamRoster = new ArrayList<>();
+    ArrayList<SoftballPlayer> ActiveRoster = new ArrayList<>();
+    ArrayList<String> battingOrder = new ArrayList<>();
+        battingOrder.add(" ");
+       /**
+         * Creates individual SoftballPlayer(s)
+         * Assigns statistics to SoftballPlayer(s)
+         * Stores SoftballPlayer(s) in ArrayList TeamRoster && ActiveRoster
+         * 
+         */
+       
+               
+    SoftballPlayer aly = new SoftballPlayer();
+        aly.ba = .350;
+        aly.name = "Aly";
+        aly.hits = 7;
+        aly.singles = 5;
+        aly.doubles = 2;
+        aly.triples = 0;
+        aly.hr = 0;
+        aly.bb = 1;
+        aly.obp = .6;
+        aly.opsPlus = 46.542610;
+        aly.gender = "female";
+    TeamRoster.add(aly);
+    ActiveRoster.add(aly);
+
+        SoftballPlayer jake = new SoftballPlayer();
+        jake.name = "Jake";
+        jake.ba = .5714286;
+        jake.hits = 16;
+        jake.singles = 9;
+        jake.doubles = 7;
+        jake.triples = 0;
+        jake.hr = 0;
+        jake.bb = 2;
+        jake.obp = .6;
+        jake.opsPlus = 148.221364;
+        jake.gender = "male";
+        TeamRoster.add(jake);
+        ActiveRoster.add(jake);
+
+        SoftballPlayer nate = new SoftballPlayer();
+        nate.name = "Nate";
+        nate.ba = .5625;
+        nate.hits = 18;
+        nate.singles = 4;
+        nate.doubles = 8;
+        nate.triples = 3;
+        nate.hr = 3;
+        nate.bb = 0;
+        nate.obp = .56256;
+        nate.opsPlus = 211.717759;
+        nate.gender = "male";
+    TeamRoster.add(nate);
+    ActiveRoster.add(nate);
+
+    SoftballPlayer niko = new SoftballPlayer();
+        niko.name = "Niko";
+        niko.ba = .6153846;
+        niko.hits = 16;
+        niko.singles = 9;
+        niko.doubles = 5;
+        niko.triples = 1;
+        niko.hr = 1;
+        niko.bb = 0;
+        niko.obp = .6153847;
+        niko.opsPlus = 178.932242;
+        niko.gender = "male";
+    TeamRoster.add(niko);
+    ActiveRoster.add(niko);
+
+    SoftballPlayer victoria = new SoftballPlayer();
+        victoria.name = "Victoria";
+        victoria.ba = .2413793;
+        victoria.hits = 7;
+        victoria.singles = 6;
+        victoria.doubles = 1;
+        victoria.triples = 0;
+        victoria.hr = 0;
+        victoria.bb = 2;
+        victoria.obp = .2903226;
+        victoria.opsPlus = 1.310851;
+        victoria.gender = "female";
+    TeamRoster.add(victoria);
+    ActiveRoster.add(victoria);
+
+    SoftballPlayer will = new SoftballPlayer();
+        will.name = "Will";
+        will.ba = .5;
+        will.hits = 15;
+        will.singles = 10;
+        will.doubles = 4;
+        will.triples = 0;
+        will.hr = 0;
+        will.bb = 0;
+        will.obp = .5;
+        will.opsPlus = 98.938613;
+        will.gender = "male";
+    TeamRoster.add(will);
+    ActiveRoster.add(will);
+
+    SoftballPlayer adam = new SoftballPlayer();
+        adam.name = "Adam";
+        adam.ba = .6;
+        adam.hits = 18;
+        adam.singles = 10;
+        adam.doubles = 2;
+        adam.triples = 0;
+        adam.hr = 0;
+        adam.bb = 1;
+        adam.obp = .6129032;
+        adam.opsPlus = 173.278441;
+        adam.gender = "male";
+    TeamRoster.add(adam);
+    ActiveRoster.add(adam);
+
+    SoftballPlayer marsh = new SoftballPlayer();
+        marsh.name = "Marsh";
+        marsh.ba = .333;
+        marsh.hits = 5;
+        marsh.singles = 4;
+        marsh.doubles = 0;
+        marsh.triples = 1;
+        marsh.hr = 0;
+        marsh.bb = 1;
+        marsh.obp = .375;
+        marsh.opsPlus = .47915875;
+        marsh.gender = "male";
+    TeamRoster.add(marsh);
+    ActiveRoster.add(marsh);
+
+    SoftballPlayer courtney = new SoftballPlayer();
+        courtney.name = "Courtney";
+        courtney.ba = 0;
+        courtney.hits = 0;
+        courtney.singles = 0;
+        courtney.doubles = 0;
+        courtney.triples = 0;
+        courtney.hr = 0;
+        courtney.bb = 0;
+        courtney.obp = 0;
+        courtney.opsPlus = 0;
+        courtney.gender = "female";
+    TeamRoster.add(courtney);
+    ActiveRoster.add(courtney);
+        
+
+    SoftballPlayer steph = new SoftballPlayer();
+        steph.name = "Steph";
+        steph.ba = 0;
+        steph.hits = 0;
+        steph.singles = 0;
+        steph.doubles = 0;
+        steph.triples = 0;
+        steph.hr = 0;
+        steph.bb = 0;
+        steph.obp = 0;
+        steph.opsPlus = 0;
+        steph.gender = "female";
+    TeamRoster.add(steph);
+    ActiveRoster.add(steph);
+
+    SoftballPlayer stephen = new SoftballPlayer();
+        stephen.name = "Stephen";
+        stephen.ba = .4814815;
+        stephen.hits = 13;
+        stephen.singles = 10;
+        stephen.doubles = 3;
+        stephen.triples = 0;
+        stephen.hr = 0;
+        stephen.bb = 1;
+        stephen.obp = .5;
+        stephen.opsPlus = 92.641308;
+        stephen.gender = "male";
+    TeamRoster.add(stephen);
+    ActiveRoster.add(stephen);
+        
+        /**
+        * Creates Scanner to get player who are not going to make it to the game
+        * Then searches TeamRoster for SoftballPlayer.name that matches then input
+        */
+            System.out.println("Please enter First Name of players that"
++ " are not coming\n Type \"Done\" when done.");
+            Scanner notComing = new Scanner(System.in);
+             
+
+while (!notComing.nextLine().equalsIgnoreCase("done")){
+        
+    ActiveRoster.stream().
+filter(SoftballPlayer -> (SoftballPlayer.name.equalsIgnoreCase
+        (notComing.nextLine()))).forEachOrdered(SoftballPlayer -> {
+            ActiveRoster.remove(SoftballPlayer);});
+    System.out.println("Please enter First Name of players that"
++ " are not coming\n Type \"Done\" when done.");
+    } //CLOSES WHILE
+
+if (notComing.nextLine().equalsIgnoreCase("done")){
+    System.out.println("Sweet lets take a look at the lineup!");
+}
+    
+            /**
+            * 
+            * Takes input from scanner(s)... searches through ArrayList
+            * TeamRoster for matching String at SoftballPlayer.name
+            * It will then remove that name from ActiveRoster
+            */
+ 
+        /**
+         * puts all relevant statistics into their respective arrays 
+         * to be compared 
+         */
+        double[] battingAverage = {0, jake.ba, aly.ba, adam.ba, courtney.ba,
+            marsh.ba, nate.ba, niko.ba, steph.ba, victoria.ba, will.ba};
+
+        double[] hits = {0, jake.hits, aly.hits, adam.hits, courtney.hits,
+            marsh.hits, nate.hits, niko.hits, steph.hits,
+            victoria.hits, will.hits};
+
+        double[] singles = {0, jake.singles, aly.singles, adam.singles, courtney.singles,
+            marsh.singles, nate.singles, niko.singles, steph.singles,
+            victoria.singles, will.singles};
+
+        double[] doubles = {0, jake.doubles, aly.doubles, adam.doubles, courtney.doubles,
+            marsh.doubles, nate.doubles, niko.doubles, steph.doubles,
+            victoria.doubles, will.doubles};
+
+        double[] triples = {0, jake.triples, aly.triples, adam.triples, courtney.triples,
+            marsh.triples, nate.triples, niko.triples, steph.triples,
+            victoria.triples, will.triples};
+
+        double[] homeRuns = {0, jake.hr, aly.hr, adam.hr, courtney.hr,
+            marsh.hr, nate.hr, niko.hr, steph.hr, victoria.hr, will.hr};
+
+        double[] walks = {0, jake.bb, aly.bb, adam.bb, courtney.bb,
+            marsh.bb, nate.bb, niko.bb, steph.bb, victoria.bb, will.bb};
+
+        double[] obp = {0, jake.obp, aly.obp, adam.obp, courtney.obp,
+            marsh.obp, nate.obp, niko.obp, steph.obp,
+            victoria.obp, will.obp};
+
+        double[] opsP = {0, jake.opsPlus, aly.opsPlus, adam.opsPlus, courtney.opsPlus,
+            marsh.opsPlus, nate.opsPlus, niko.opsPlus, steph.opsPlus, victoria.opsPlus, will.opsPlus};
+       
+        /**
+         * Searches statistic Arrays
+         * finds best of described statistic 
+         */
+        
+        double bestBA = Arrays.stream(battingAverage).max().getAsDouble();
+        double bestHits = Arrays.stream(hits).max().getAsDouble();
+        double bestSingles = Arrays.stream(singles).max().getAsDouble();
+        double bestDoubles = Arrays.stream(doubles).max().getAsDouble();
+        double bestTriples = Arrays.stream(triples).max().getAsDouble();
+        double bestHr = Arrays.stream(homeRuns).max().getAsDouble();
+        double bestBb = Arrays.stream(walks).max().getAsDouble();
+        double bestOBP = Arrays.stream(obp).max().getAsDouble();
+        double bestOpsPlus = Arrays.stream(opsP).max().getAsDouble();
+        double bestBa = Arrays.stream(battingAverage).max().getAsDouble();
+
+       /**
+        * 
+        * Takes best statistic and searches ArrayList ActiveRoster
+        * for Object SoftballPlayer with matching statistic(value)
+        * stream()`s` add SoftballPlayer.name to battingOrder
+        * order of stream()`s` are in order to set order
+        */
+            
+            ActiveRoster.stream(). //batting 1st
+            filter(SoftballPlayer -> (SoftballPlayer.hits == bestHits)).forEachOrdered(SoftballPlayer -> {
+            battingOrder.add(SoftballPlayer.name);
+            ActiveRoster.remove(SoftballPlayer);});
+            
+            ActiveRoster.stream(). // batting 2nd
+        filter(SoftballPlayer -> (SoftballPlayer.obp == bestOBP)).forEachOrdered(SoftballPlayer -> {
+            battingOrder.add(SoftballPlayer.name);
+        ActiveRoster.remove(SoftballPlayer);});
+            
+            ActiveRoster.stream(). // batting 3rd
+        filter(SoftballPlayer -> (SoftballPlayer.doubles == bestDoubles)).forEachOrdered(SoftballPlayer -> {
+            battingOrder.add(SoftballPlayer.name);
+        ActiveRoster.remove(SoftballPlayer);});
+            
+            ActiveRoster.stream(). // batting 4th
+        filter(SoftballPlayer -> (SoftballPlayer.triples == bestTriples)).forEachOrdered(SoftballPlayer -> {
+            battingOrder.add(SoftballPlayer.name);
+        ActiveRoster.remove(SoftballPlayer);});
+            
+            ActiveRoster.stream(). // batting 5th
+        filter(SoftballPlayer -> (SoftballPlayer.hr == bestTriples)).forEachOrdered(SoftballPlayer -> {
+            battingOrder.add(SoftballPlayer.name);
+        ActiveRoster.remove(SoftballPlayer);});
+            
+            ActiveRoster.stream(). // batting 6th
+        filter(SoftballPlayer -> (SoftballPlayer.singles == bestSingles)).forEachOrdered(SoftballPlayer -> {
+            battingOrder.add(SoftballPlayer.name);
+        ActiveRoster.remove(SoftballPlayer);});
+            
+            ActiveRoster.stream(). // batting 7th
+        filter(SoftballPlayer -> (SoftballPlayer.bb == bestDoubles)).forEachOrdered(SoftballPlayer -> {
+            battingOrder.add(SoftballPlayer.name);
+        ActiveRoster.remove(SoftballPlayer);});
+            
+            ActiveRoster.stream(). // batting 8th
+        filter(SoftballPlayer -> (SoftballPlayer.bb == bestOpsPlus)).forEachOrdered(SoftballPlayer -> {
+            battingOrder.add(SoftballPlayer.name);
+        ActiveRoster.remove(SoftballPlayer);});
+            
+            ActiveRoster.stream(). // batting 9th
+        filter(SoftballPlayer -> (SoftballPlayer.bb == bestOBP)).forEachOrdered(SoftballPlayer -> {
+            battingOrder.add(SoftballPlayer.name);
+        ActiveRoster.remove(SoftballPlayer);});
+            
+            ActiveRoster.stream(). // batting 10th
+        filter(SoftballPlayer -> (SoftballPlayer.bb == bestOBP)).forEachOrdered(SoftballPlayer -> {
+            battingOrder.add(SoftballPlayer.name);
+        ActiveRoster.remove(SoftballPlayer);});
+            
+            ActiveRoster.stream(). // batting 11th
+        filter(SoftballPlayer -> (SoftballPlayer.bb == bestOBP)).forEachOrdered(SoftballPlayer -> {
+            battingOrder.add(SoftballPlayer.name);
+        ActiveRoster.remove(SoftballPlayer);});
+            
+   /*         ActiveRoster.stream(). // batting 12th
+        filter(SoftballPlayer -> (SoftballPlayer.bb == bestBb)).forEachOrdered(SoftballPlayer -> {
+            battingOrder.add(SoftballPlayer.name);});
+     */       
+            System.out.println(battingOrder);
+            
+        
+}// closes createLineup method
+}// closes SlowJams_Generate_Lineup
+
+//comment
+// class - contains everything has members
+//methods - do something
+// statements - tell the computer to do something
+// properties - store something
+//access modifier (public) sets Who can use
+//static - no instacnce of class is needed
+//object - instance of class is needed
