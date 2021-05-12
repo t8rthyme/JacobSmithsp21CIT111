@@ -1,0 +1,554 @@
+//comment
+// class - contains everything has members
+//methods - do something
+// statements - tell the computer to do something
+// properties - store something
+//access modifier (public) sets Who can use
+//static - no instacnce of class is needed
+//object - instance of class is needed
+package slowJams;
+
+
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+
+/**
+ * @author jacob
+ **/
+public class Roster {
+
+    public ArrayList<SoftballPlayer> ActiveRoster = new ArrayList<>();
+    public ArrayList<Double>BattingAverage = new ArrayList<>();
+    public ArrayList<Double>Hits = new ArrayList<>();
+    public ArrayList<Double>Singles = new ArrayList<>();
+    public ArrayList<Double>Doubles = new ArrayList<>();
+    public ArrayList<Double>Triples = new ArrayList<>();
+    public ArrayList<Double>HomeRuns = new ArrayList<>();
+    public ArrayList<Double>Walks = new ArrayList<>();
+    public ArrayList<Double>OBP = new ArrayList<>();
+    public ArrayList<Double>OpsPlus = new ArrayList<>();
+    public ArrayList<String>battingOrder = new ArrayList<>();
+    public ArrayList<Double>SpeedRank = new ArrayList ();
+    
+    public double bestBA = Collections.max(BattingAverage);
+    public double bestHits = Collections.max(Hits);
+    public double bestSingles = Collections.max(Singles);
+    public double bestDoubles = Collections.max(Doubles);
+    public double bestTriples = Collections.max(Triples);
+    public double bestHr = Collections.max(HomeRuns);
+    public double bestBb = Collections.max(Walks);
+    public double bestOBP = Collections.max(OBP);
+    public double bestOpsPlus = Collections.max(OpsPlus);
+    public double fastest = Collections.min(SpeedRank);
+
+    public void teamRoster(){
+
+        SoftballPlayer aly = new SoftballPlayer();
+        aly.ba = .350;
+        aly.name = "Aly";
+        aly.hits = 7;
+        aly.singles = 5;
+        aly.doubles = 2;
+        aly.triples = 0;
+        aly.hr = 0;
+        aly.bb = 1;
+        aly.obp = .6;
+        aly.opsPlus = 46.542610;
+        aly.gender = "female";
+        aly.speed= 1;
+        ActiveRoster.add(aly);
+        BattingAverage.add(aly.ba);
+        Hits.add(aly.hits);
+        Singles.add(aly.singles);
+        Doubles.add(aly.doubles);
+        Triples.add(aly.triples);
+        HomeRuns.add(aly.hr);
+        Walks.add(aly.bb);
+        OBP.add(aly.obp);
+        OpsPlus.add(aly.opsPlus);
+        SpeedRank.add(aly.speed);
+
+
+        SoftballPlayer jake = new SoftballPlayer();
+        jake.name = "Jake";
+        jake.ba = .5714286;
+        jake.hits = 16;
+        jake.singles = 9;
+        jake.doubles = 7;
+        jake.triples = 0;
+        jake.hr = 0;
+        jake.bb = 2;
+        jake.obp = .6;
+        jake.opsPlus = 148.221364;
+        jake.gender = "male";
+        jake.speed = 6;
+        ActiveRoster.add(jake);
+        BattingAverage.add(jake.ba);
+        Hits.add(jake.hits);
+        Singles.add(jake.singles);
+        Doubles.add(jake.doubles);
+        Triples.add(jake.triples);
+        HomeRuns.add(jake.hr);
+        Walks.add(jake.bb);
+        OBP.add(jake.obp);
+        OpsPlus.add(jake.opsPlus);
+        SpeedRank.add(jake.speed);
+
+        SoftballPlayer nate = new SoftballPlayer();
+        nate.name = "Nate";
+        nate.ba = .5625;
+        nate.hits = 18;
+        nate.singles = 4;
+        nate.doubles = 8;
+        nate.triples = 3;
+        nate.hr = 3;
+        nate.bb = 0;
+        nate.obp = .56256;
+        nate.opsPlus = 211.717759;
+        nate.gender = "male";
+        nate.speed = 9;
+        ActiveRoster.add(nate);
+        BattingAverage.add(nate.ba);
+        Hits.add(nate.hits);
+        Singles.add(nate.singles);
+        Doubles.add(nate.doubles);
+        Triples.add(nate.triples);
+        HomeRuns.add(nate.hr);
+        Walks.add(nate.bb);
+        OBP.add(nate.obp);
+        OpsPlus.add(nate.opsPlus);
+
+
+    SoftballPlayer niko = new SoftballPlayer();
+        niko.name = "Niko";
+        niko.ba = .6153846;
+        niko.hits = 16;
+        niko.singles = 9;
+        niko.doubles = 5;
+        niko.triples = 1;
+        niko.hr = 1;
+        niko.bb = 0;
+        niko.obp = .6153847;
+        niko.opsPlus = 178.932242;
+        niko.gender = "male";
+        niko.speed = 11;
+        ActiveRoster.add(niko);
+        BattingAverage.add(niko.ba);
+        Hits.add(niko.hits);
+        Singles.add(niko.singles);
+        Doubles.add(niko.doubles);
+        Triples.add(niko.triples);
+        HomeRuns.add(niko.hr);
+        Walks.add(niko.bb);
+        OBP.add(niko.obp);
+        OpsPlus.add(niko.opsPlus);
+
+    SoftballPlayer victoria = new SoftballPlayer();
+        victoria.name = "Victoria";
+        victoria.ba = .2413793;
+        victoria.hits = 7;
+        victoria.singles = 6;
+        victoria.doubles = 1;
+        victoria.triples = 0;
+        victoria.hr = 0;
+        victoria.bb = 2;
+        victoria.obp = .2903226;
+        victoria.opsPlus = 1.310851;
+        victoria.gender = "female";
+        victoria.speed = 2;
+        ActiveRoster.add(victoria);
+        BattingAverage.add(victoria.ba);
+        Hits.add(victoria.hits);
+        Singles.add(victoria.singles);
+        Doubles.add(victoria.doubles);
+        Triples.add(victoria.triples);
+        HomeRuns.add(victoria.hr);
+        Walks.add(victoria.bb);
+        OBP.add(victoria.obp);
+        OpsPlus.add(victoria.opsPlus);
+
+
+
+    SoftballPlayer will = new SoftballPlayer();
+        will.name = "Will";
+        will.ba = .5;
+        will.hits = 15;
+        will.singles = 10;
+        will.doubles = 4;
+        will.triples = 0;
+        will.hr = 0;
+        will.bb = 0;
+        will.obp = .5;
+        will.opsPlus = 98.938613;
+        will.gender = "male";
+        will.speed = 3;
+        ActiveRoster.add(will);
+        BattingAverage.add(will.ba);
+        Hits.add(will.hits);
+        Singles.add(will.singles);
+        Doubles.add(will.doubles);
+        Triples.add(will.triples);
+        HomeRuns.add(will.hr);
+        Walks.add(will.bb);
+        OBP.add(will.obp);
+        OpsPlus.add(will.opsPlus);
+
+
+    SoftballPlayer adam = new SoftballPlayer();
+        adam.name = "Adam";
+        adam.ba = .6;
+        adam.hits = 18;
+        adam.singles = 10;
+        adam.doubles = 2;
+        adam.triples = 0;
+        adam.hr = 0;
+        adam.bb = 1;
+        adam.obp = .6129032;
+        adam.opsPlus = 173.278441;
+        adam.gender = "male";
+        adam.speed = 7;
+        ActiveRoster.add(adam);
+        BattingAverage.add(adam.ba);
+        Hits.add(adam.hits);
+        Singles.add(adam.singles);
+        Doubles.add(adam.doubles);
+        Triples.add(adam.triples);
+        HomeRuns.add(adam.hr);
+        Walks.add(adam.bb);
+        OBP.add(adam.obp);
+        OpsPlus.add(adam.opsPlus);
+
+
+
+    SoftballPlayer marsh = new SoftballPlayer();
+        marsh.name = "Marsh";
+        marsh.ba = .333;
+        marsh.hits = 5;
+        marsh.singles = 4;
+        marsh.doubles = 0;
+        marsh.triples = 1;
+        marsh.hr = 0;
+        marsh.bb = 1;
+        marsh.obp = .375;
+        marsh.opsPlus = .47915875;
+        marsh.gender = "male";
+        marsh.speed = 8;
+        ActiveRoster.add(marsh);
+        BattingAverage.add(marsh.ba);
+        Hits.add(marsh.hits);
+        Singles.add(marsh.singles);
+        Doubles.add(marsh.doubles);
+        Triples.add(marsh.triples);
+        HomeRuns.add(marsh.hr);
+        Walks.add(marsh.bb);
+        OBP.add(marsh.obp);
+        OpsPlus.add(marsh.opsPlus);
+
+
+
+    SoftballPlayer courtney = new SoftballPlayer();
+        courtney.name = "Courtney";
+        courtney.ba = 0;
+        courtney.hits = 0;
+        courtney.singles = 0;
+        courtney.doubles = 0;
+        courtney.triples = 0;
+        courtney.hr = 0;
+        courtney.bb = 0;
+        courtney.obp = 0;
+        courtney.opsPlus = 0;
+        courtney.gender = "female";
+        courtney.speed = 5;
+        ActiveRoster.add(courtney);
+        BattingAverage.add(courtney.ba);
+        Hits.add(courtney.hits);
+        Singles.add(courtney.singles);
+        Doubles.add(courtney.doubles);
+        Triples.add(courtney.triples);
+        HomeRuns.add(courtney.hr);
+        Walks.add(courtney.bb);
+        OBP.add(courtney.obp);
+        OpsPlus.add(courtney.opsPlus);
+
+    SoftballPlayer steph = new SoftballPlayer();
+        steph.name = "Steph";
+        steph.ba = 0;
+        steph.hits = 0;
+        steph.singles = 0;
+        steph.doubles = 0;
+        steph.triples = 0;
+        steph.hr = 0;
+        steph.bb = 0;
+        steph.obp = 0;
+        steph.opsPlus = 0;
+        steph.gender = "female";
+        steph.speed = 4;
+        ActiveRoster.add(steph);
+        BattingAverage.add(steph.ba);
+        Hits.add(steph.hits);
+        Singles.add(steph.singles);
+        Doubles.add(steph.doubles);
+        Triples.add(steph.triples);
+        HomeRuns.add(steph.hr);
+        Walks.add(steph.bb);
+        OBP.add(steph.obp);
+        OpsPlus.add(steph.opsPlus);
+
+
+    SoftballPlayer stephen = new SoftballPlayer();
+        stephen.name = "Stephen";
+        stephen.ba = .4814815;
+        stephen.hits = 13;
+        stephen.singles = 10;
+        stephen.doubles = 3;
+        stephen.triples = 0;
+        stephen.hr = 0;
+        stephen.bb = 1;
+        stephen.obp = .5;
+        stephen.opsPlus = 92.641308;
+        stephen.gender = "male";
+        stephen.speed = 10;
+        ActiveRoster.add(stephen);
+        BattingAverage.add(stephen.ba);
+        Hits.add(stephen.hits);
+        Singles.add(stephen.singles);
+        Doubles.add(stephen.doubles);
+        Triples.add(stephen.triples);
+        HomeRuns.add(stephen.hr);
+        Walks.add(stephen.bb);
+        OBP.add(stephen.obp);
+        OpsPlus.add(stephen.opsPlus);
+
+} // creates SoftballPlayers, ArrayLists, and  stats
+
+    public void benchPlayer(String dead){
+//removing player who is not coming to the game from Active Roster
+
+        ActiveRoster.stream(). // batting 2nd
+        filter(SoftballPlayer -> (SoftballPlayer.name.equalsIgnoreCase
+        (dead)))
+            .forEachOrdered(SoftballPlayer -> {
+            ActiveRoster.remove(SoftballPlayer);
+            BattingAverage.remove(SoftballPlayer.ba);
+            Hits.remove(SoftballPlayer.hits);
+            Singles.remove(SoftballPlayer.singles);
+            Doubles.remove(SoftballPlayer.doubles);
+            Triples.remove(SoftballPlayer.triples);
+            HomeRuns.remove(SoftballPlayer.hr);
+            Walks.remove(SoftballPlayer.bb);
+            OBP.remove(SoftballPlayer.obp);
+            OpsPlus.remove(SoftballPlayer.opsPlus);
+            SpeedRank.remove(SoftballPlayer.speed);
+            });
+    }
+
+    public ArrayList<String> createBattingOrder() {
+
+
+        ActiveRoster.stream(). // batting 1st
+        filter(speed -> (SpeedRank.equals(fastest)))
+        .forEachOrdered(SoftballPlayer -> {
+        battingOrder.add(SoftballPlayer.name);
+        ActiveRoster.remove(SoftballPlayer);
+        BattingAverage.remove(SoftballPlayer.ba);
+        Hits.remove(SoftballPlayer.hits);
+        Singles.remove(SoftballPlayer.singles);
+        Doubles.remove(SoftballPlayer.doubles);
+        Triples.remove(SoftballPlayer.triples);
+        HomeRuns.remove(SoftballPlayer.hr);
+        Walks.remove(SoftballPlayer.bb);
+        OBP.remove(SoftballPlayer.obp);
+        OpsPlus.remove(SoftballPlayer.opsPlus);
+        SpeedRank.remove(SoftballPlayer.speed);
+            });
+        ActiveRoster.stream(). // batting 2nd
+        filter(ba -> (BattingAverage.equals(bestBA)))
+        .forEachOrdered(SoftballPlayer -> {
+        battingOrder.add(SoftballPlayer.name);
+        ActiveRoster.remove(SoftballPlayer);
+        BattingAverage.remove(SoftballPlayer.ba);
+        Hits.remove(SoftballPlayer.hits);
+        Singles.remove(SoftballPlayer.singles);
+        Doubles.remove(SoftballPlayer.doubles);
+        Triples.remove(SoftballPlayer.triples);
+        HomeRuns.remove(SoftballPlayer.hr);
+        Walks.remove(SoftballPlayer.bb);
+        OBP.remove(SoftballPlayer.obp);
+        OpsPlus.remove(SoftballPlayer.opsPlus);
+        SpeedRank.remove(SoftballPlayer.speed);
+            });
+
+        ActiveRoster.stream(). // batting 3rd
+        filter(doubles -> (Doubles.equals(bestDoubles)))
+        .forEachOrdered(SoftballPlayer -> {
+        battingOrder.add(SoftballPlayer.name);
+        ActiveRoster.remove(SoftballPlayer);
+        BattingAverage.remove(SoftballPlayer.ba);
+        Hits.remove(SoftballPlayer.hits);
+        Singles.remove(SoftballPlayer.singles);
+        Doubles.remove(SoftballPlayer.doubles);
+        Triples.remove(SoftballPlayer.triples);
+        HomeRuns.remove(SoftballPlayer.hr);
+        Walks.remove(SoftballPlayer.bb);
+        OBP.remove(SoftballPlayer.obp);
+        OpsPlus.remove(SoftballPlayer.opsPlus);
+        SpeedRank.remove(SoftballPlayer.speed);
+            });
+        ActiveRoster.stream(). // batting 4th
+        filter(triples -> (Triples.equals(bestTriples)))
+        .forEachOrdered(SoftballPlayer -> {
+        battingOrder.add(SoftballPlayer.name);
+        ActiveRoster.remove(SoftballPlayer);
+        BattingAverage.remove(SoftballPlayer.ba);
+        Hits.remove(SoftballPlayer.hits);
+        Singles.remove(SoftballPlayer.singles);
+        Doubles.remove(SoftballPlayer.doubles);
+        Triples.remove(SoftballPlayer.triples);
+        HomeRuns.remove(SoftballPlayer.hr);
+        Walks.remove(SoftballPlayer.bb);
+        OBP.remove(SoftballPlayer.obp);
+        OpsPlus.remove(SoftballPlayer.opsPlus);
+        SpeedRank.remove(SoftballPlayer.speed);
+            });
+        ActiveRoster.stream(). // batting 5th
+        filter(ba -> (BattingAverage.equals(bestBA)))
+        .forEachOrdered(SoftballPlayer -> {
+        battingOrder.add(SoftballPlayer.name);
+        ActiveRoster.remove(SoftballPlayer);
+        BattingAverage.remove(SoftballPlayer.ba);
+        Hits.remove(SoftballPlayer.hits);
+        Singles.remove(SoftballPlayer.singles);
+        Doubles.remove(SoftballPlayer.doubles);
+        Triples.remove(SoftballPlayer.triples);
+        HomeRuns.remove(SoftballPlayer.hr);
+        Walks.remove(SoftballPlayer.bb);
+        OBP.remove(SoftballPlayer.obp);
+        OpsPlus.remove(SoftballPlayer.opsPlus);
+        SpeedRank.remove(SoftballPlayer.speed);
+            });
+        ActiveRoster.stream(). // batting 6th
+        filter(obp -> (OBP.equals(bestOBP)))
+        .forEachOrdered(SoftballPlayer -> {
+        battingOrder.add(SoftballPlayer.name);
+        ActiveRoster.remove(SoftballPlayer);
+        BattingAverage.remove(SoftballPlayer.ba);
+        Hits.remove(SoftballPlayer.hits);
+        Singles.remove(SoftballPlayer.singles);
+        Doubles.remove(SoftballPlayer.doubles);
+        Triples.remove(SoftballPlayer.triples);
+        HomeRuns.remove(SoftballPlayer.hr);
+        Walks.remove(SoftballPlayer.bb);
+        OBP.remove(SoftballPlayer.obp);
+        OpsPlus.remove(SoftballPlayer.opsPlus);
+        SpeedRank.remove(SoftballPlayer.speed);
+            });
+        ActiveRoster.stream(). // batting 7th
+        filter(speed -> (SpeedRank.equals(fastest)))
+        .forEachOrdered(SoftballPlayer -> {
+        battingOrder.add(SoftballPlayer.name);
+        ActiveRoster.remove(SoftballPlayer);
+        BattingAverage.remove(SoftballPlayer.ba);
+        Hits.remove(SoftballPlayer.hits);
+        Singles.remove(SoftballPlayer.singles);
+        Doubles.remove(SoftballPlayer.doubles);
+        Triples.remove(SoftballPlayer.triples);
+        HomeRuns.remove(SoftballPlayer.hr);
+        Walks.remove(SoftballPlayer.bb);
+        OBP.remove(SoftballPlayer.obp);
+        OpsPlus.remove(SoftballPlayer.opsPlus);
+        SpeedRank.remove(SoftballPlayer.speed);
+            });
+        ActiveRoster.stream(). // batting 8th
+        filter(opsPlus -> (OpsPlus.equals(bestOpsPlus)))
+        .forEachOrdered(SoftballPlayer -> {
+        battingOrder.add(SoftballPlayer.name);
+        ActiveRoster.remove(SoftballPlayer);
+        BattingAverage.remove(SoftballPlayer.ba);
+        Hits.remove(SoftballPlayer.hits);
+        Singles.remove(SoftballPlayer.singles);
+        Doubles.remove(SoftballPlayer.doubles);
+        Triples.remove(SoftballPlayer.triples);
+        HomeRuns.remove(SoftballPlayer.hr);
+        Walks.remove(SoftballPlayer.bb);
+        OBP.remove(SoftballPlayer.obp);
+        OpsPlus.remove(SoftballPlayer.opsPlus);
+        SpeedRank.remove(SoftballPlayer.speed);
+            });
+        ActiveRoster.stream(). // batting 1st
+        filter(ba -> (BattingAverage.equals(bestBA)))
+        .forEachOrdered(SoftballPlayer -> {
+        battingOrder.add(SoftballPlayer.name);
+        ActiveRoster.remove(SoftballPlayer);
+        BattingAverage.remove(SoftballPlayer.ba);
+        Hits.remove(SoftballPlayer.hits);
+        Singles.remove(SoftballPlayer.singles);
+        Doubles.remove(SoftballPlayer.doubles);
+        Triples.remove(SoftballPlayer.triples);
+        HomeRuns.remove(SoftballPlayer.hr);
+        Walks.remove(SoftballPlayer.bb);
+        OBP.remove(SoftballPlayer.obp);
+        OpsPlus.remove(SoftballPlayer.opsPlus);
+        SpeedRank.remove(SoftballPlayer.speed);
+            });
+        ActiveRoster.stream(). // batting 1st
+        filter(ba -> (BattingAverage.equals(bestBA)))
+        .forEachOrdered(SoftballPlayer -> {
+        battingOrder.add(SoftballPlayer.name);
+        ActiveRoster.remove(SoftballPlayer);
+        BattingAverage.remove(SoftballPlayer.ba);
+        Hits.remove(SoftballPlayer.hits);
+        Singles.remove(SoftballPlayer.singles);
+        Doubles.remove(SoftballPlayer.doubles);
+        Triples.remove(SoftballPlayer.triples);
+        HomeRuns.remove(SoftballPlayer.hr);
+        Walks.remove(SoftballPlayer.bb);
+        OBP.remove(SoftballPlayer.obp);
+        OpsPlus.remove(SoftballPlayer.opsPlus);
+        SpeedRank.remove(SoftballPlayer.speed);
+            });
+        ActiveRoster.stream(). // batting 1st
+        filter(ba -> (BattingAverage.equals(bestBA)))
+        .forEachOrdered(SoftballPlayer -> {
+        battingOrder.add(SoftballPlayer.name);
+        ActiveRoster.remove(SoftballPlayer);
+        BattingAverage.remove(SoftballPlayer.ba);
+        Hits.remove(SoftballPlayer.hits);
+        Singles.remove(SoftballPlayer.singles);
+        Doubles.remove(SoftballPlayer.doubles);
+        Triples.remove(SoftballPlayer.triples);
+        HomeRuns.remove(SoftballPlayer.hr);
+        Walks.remove(SoftballPlayer.bb);
+        OBP.remove(SoftballPlayer.obp);
+        OpsPlus.remove(SoftballPlayer.opsPlus);
+        SpeedRank.remove(SoftballPlayer.speed);
+            });
+
+        ActiveRoster.stream(). // batting 1st
+        filter(speed -> (SpeedRank.equals(fastest)))
+        .forEachOrdered(SoftballPlayer -> {
+        battingOrder.add(SoftballPlayer.name);
+        ActiveRoster.remove(SoftballPlayer);
+        BattingAverage.remove(SoftballPlayer.ba);
+        Hits.remove(SoftballPlayer.hits);
+        Singles.remove(SoftballPlayer.singles);
+        Doubles.remove(SoftballPlayer.doubles);
+        Triples.remove(SoftballPlayer.triples);
+        HomeRuns.remove(SoftballPlayer.hr);
+        Walks.remove(SoftballPlayer.bb);
+        OBP.remove(SoftballPlayer.obp);
+        OpsPlus.remove(SoftballPlayer.opsPlus);
+        SpeedRank.remove(SoftballPlayer.speed);
+            });
+
+   return battingOrder; }
+
+
+
+
+}
+
+
+
+
