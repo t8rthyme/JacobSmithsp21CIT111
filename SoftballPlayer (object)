@@ -1,0 +1,46 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+//comment
+// class - contains everything has members (make own data type kina?)
+//methods - do something
+// statements - tell the computer to do something
+// properties - store something
+//access modifier (public) sets Who can use
+//static - no instacnce of class is needed
+//object - instance of class is needed
+package slowJams;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+
+
+
+/**
+ *
+ * @author jacob
+ */
+public class SoftballPlayer {
+
+
+
+public String name;
+public double ba;
+public double hits;
+public double singles;
+public double doubles;
+public double triples;
+public double hr;
+public double bb;
+public double obp;
+public double opsPlus;
+public String gender;
+public double speed;
+
+
+    }
+
+
