@@ -1,0 +1,708 @@
+package fundProj;
+
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ *
+ * @author JacobSmith
+ */
+public class BattingSim {
+
+    // member vars
+    public static int BALLS;
+    public static int STRIKES;
+    public static int OUTS = 0;
+    public static int RUNS = 0;
+    public static int INNING;
+    public static int PITCH;
+    public static int HIT;
+
+    public static boolean RunnerOnFIRSTBASE = false;
+    public static boolean RunnerOnSECONDBASE = false;
+    public static boolean RunnerOnTHIRDBASE = false;
+
+    public static final int STRIKE = 1;
+    public static final int BALL = 0;
+    public static int runnerPosition = 0;
+
+    public static void main(String[] args) throws InterruptedException {
+        System.out.println("Welcome to my Softball Batting Simulator!");
+        while (OUTS < 3) {
+            atBat();
+        }
+        while (OUTS == 3) {
+            System.out.println("Game Over");
+            System.out.println("You scored: " + RUNS + "runs");
+            break;
+        }
+        while (STRIKES == 3){
+            System.out.println("Strike Out!");
+            OUTS = OUTS + 1;
+            BALLS = 0; STRIKES = 0;
+            break;
+        }
+
+    } // close main
+
+    public static int atBat() throws InterruptedException {
+        pitchersPitch();
+// returns PITCH: ball or strike(generate random values from 0-1)
+        Thread.sleep(1500);
+        System.out.println(" ----- " + "And the pitch" + " ----- ");
+        Thread.sleep(500);
+        System.out.println("0: Swing at Pitch\n1: Do Not Swing");
+
+        Scanner swingOrNoSwing = new Scanner(System.in);
+        int batterChoice = swingOrNoSwing.nextInt();
+        if (batterChoice == 0) {
+            swing();
+        }
+        if (batterChoice == 1) {
+            takePitch(); // endless loop
+        }
+        return RUNS; // ?
+    } // NEEDS WORK
+
+    public static int pitchersPitch() {
+        Random incomingPitch = new Random();
+        int pitchUpperbound = 2;
+        PITCH = incomingPitch.nextInt(pitchUpperbound);
+        return PITCH; // returns ball or strike
+    } // DONE returns pitch
+
+    public static int swing() throws InterruptedException {
+        while (PITCH == STRIKE) {
+            Random swing = new Random();
+            int swingUpperbound = 10;
+// 0 miss, 1 single, 2 double, 3 triple, 4 homerun, 5 foul, 6 groundout,
+// 7 lineout, 8 flyout, 9 foulout
+            HIT = swing.nextInt(swingUpperbound);
+
+            while (HIT == 0) {
+                miss();
+                break;
+            }
+            while (HIT == 1) {
+                single();
+                break;
+            }
+            while (HIT == 2) {
+                doubled();
+                break;
+            }
+            while (HIT == 3) {
+                triple();
+                break;
+            }
+            while (HIT == 4) {
+                homeRun();
+                break;
+            }
+            while (HIT == 5) {
+                foul();
+                break;
+            }
+            while (HIT == 6) {
+                groundOut();
+                break;
+            }
+            while (HIT == 7) {
+                lineOut();
+                break;
+            }
+            while (HIT == 8) {
+                flyOut();
+                break;
+            }
+            while (HIT == 9) {
+                foulOut();
+                break;
+            }
+
+            return HIT & STRIKES & OUTS;
+        }
+
+        while (PITCH == BALL) {
+            HIT = 0;
+            System.out.println("Swing and a miss");
+            STRIKES = STRIKES + 1;
+            while (STRIKES < 3){
+            System.out.println(BALLS + " balls" + " & " + STRIKES + " strikes");
+            break;
+            }
+            while (STRIKES == 3){
+                System.out.println("Strike " + STRIKES);
+                System.out.println("You're Out!");
+                BALLS = 0; STRIKES = 0; OUTS = OUTS + 1;
+            }
+            break;
+        }
+
+        return BALLS;
+    } // closes the swing option
+
+    public static int takePitch() {
+
+        while (PITCH == STRIKE) {
+            STRIKES = STRIKES + 1;
+            while (STRIKES <= 2) {
+                System.out.println("Strike " + STRIKES);
+                System.out.println(BALLS + " balls " + " & " + STRIKES + " strikes");
+                break;
+            }
+            while (STRIKES == 3) {
+                System.out.println("Strike " + STRIKES);
+                System.out.println("You're out!");
+                STRIKES = 0; BALLS = 0;
+                break;
+            }
+            //  closes strikes
+
+            break;
+        } // closes STRIKE
+        while (PITCH == BALL) {
+            while (BALLS < 4) {
+                BALLS = BALLS + 1;
+                System.out.println("Ball " + BALLS);
+                System.out.println(BALLS + " balls " + " & " + STRIKES + " strikes");
+                break;
+            }
+            while (BALLS == 4) {
+                System.out.println("Take your base!");
+                STRIKES = 0;
+                BALLS = 0;
+                STRIKES = 0; BALLS = 0;
+                break;
+            }
+
+            break;
+        }
+
+        return HIT & BALLS;
+
+    } // NEEDS WORK maybe DELETE
+
+    public static int miss() {
+        STRIKES = STRIKES + 1;
+        while (STRIKES < 3) {
+            System.out.println("Strike!");
+            System.out.println(BALLS + " balls " + " & " + STRIKES + " strikes");
+            break;
+        }
+
+        while (STRIKES == 3) {
+            System.out.println("Strike " + STRIKES);
+            System.out.println("You're OUT!");
+            break;
+
+        }
+        return STRIKES;
+    }
+
+    public static boolean single() {
+        System.out.println("Soft grounder...\nSingle");
+
+        while // Empty Bases
+                (RunnerOnFIRSTBASE == false && RunnerOnSECONDBASE == false
+                && RunnerOnTHIRDBASE == false) {
+            RunnerOnFIRSTBASE = true;
+            RunnerOnSECONDBASE = false;
+            RunnerOnTHIRDBASE = false;
+            System.out.println("Runner on First");
+            System.out.println(OUTS + " outs");
+            System.out.println("Score: " + RUNS + " Runs");
+            break;
+        }
+        while // runner on First ONLY
+                (RunnerOnFIRSTBASE == true && RunnerOnSECONDBASE == false
+                && RunnerOnTHIRDBASE == false) {
+            RunnerOnFIRSTBASE = true;
+            RunnerOnSECONDBASE = true;
+            RunnerOnTHIRDBASE = false;
+            System.out.println("Runner on First & Second");
+            System.out.println(OUTS + " outs");
+            System.out.println("Score: " + RUNS + " Runs");
+            break;
+        }
+        while // runner on Second ONLY
+                (RunnerOnFIRSTBASE == false && RunnerOnSECONDBASE == true
+                && RunnerOnTHIRDBASE == false) {
+
+            RunnerOnFIRSTBASE = true;
+            RunnerOnSECONDBASE = false;
+            RunnerOnTHIRDBASE = true;
+            System.out.println("Runner on First & Third");
+            System.out.println(OUTS + " outs");
+            System.out.println("Score: " + RUNS + " Runs");
+            break;
+        }
+        while // runner on Third ONLY
+                (RunnerOnFIRSTBASE == false && RunnerOnSECONDBASE == false
+                && RunnerOnTHIRDBASE == true) {
+
+            RunnerOnFIRSTBASE = true;
+            RunnerOnSECONDBASE = false;
+            RunnerOnTHIRDBASE = false;
+            RUNS = RUNS + 1;
+            System.out.println("Runner SCORES!!!!");
+            System.out.println("Runner on First");
+            System.out.println(OUTS + " outs");
+            System.out.println("Score: " + RUNS + " Runs");
+            break;
+        }
+        while //runner on First and Second
+                (RunnerOnFIRSTBASE == true && RunnerOnSECONDBASE == true
+                && RunnerOnTHIRDBASE == false) {
+            RunnerOnFIRSTBASE = true;
+            RunnerOnSECONDBASE = true;
+            RunnerOnTHIRDBASE = false;
+            OUTS = OUTS + 1;
+            System.out.println("Runner thrown out at Third");
+            System.out.println("Runner on First & Second");
+            System.out.println("Score: " + RUNS + " Runs");
+            System.out.println(OUTS + " outs");
+            break;
+        }
+        while // runners on First and Third
+                (RunnerOnFIRSTBASE == true && RunnerOnSECONDBASE == false
+                && RunnerOnTHIRDBASE == true) {
+            RunnerOnFIRSTBASE = false;
+            RunnerOnSECONDBASE = false;
+            RunnerOnTHIRDBASE = false;
+            OUTS = OUTS + 2;
+            while (OUTS > 3) {
+                System.out.println("Defense turns double play");
+                System.out.println(OUTS + " outs");
+                System.out.println("Score: " + RUNS + " Runs");
+                break;
+            }
+            while (OUTS < 3) {
+                System.out.println("Defense turns double play");
+                System.out.println("Runner Scores");
+                RUNS = RUNS + 1;
+                System.out.println("Bases Empty");
+                System.out.println(OUTS + " outs");
+                System.out.println("Score: " + RUNS + " Runs");
+            }
+            break;
+        }
+        while // runners on Second and Third
+                (RunnerOnFIRSTBASE == false && RunnerOnSECONDBASE == true
+                && RunnerOnTHIRDBASE == true) {
+            RunnerOnFIRSTBASE = true;
+            RunnerOnSECONDBASE = true;
+            RunnerOnTHIRDBASE = true;
+            System.out.println("Defender Locked Up");
+            System.out.println("Everybody Safe");
+            System.out.println("Bases Loaded");
+            System.out.println(OUTS + " outs");
+            System.out.println("Score: " + RUNS + " Runs");
+            break;
+        }
+        while // bases loaded
+                (RunnerOnFIRSTBASE == true && RunnerOnSECONDBASE == true
+                && RunnerOnTHIRDBASE == true) {
+            OUTS = OUTS + 1;
+            System.out.println("Defender throws out lead runner at home!");
+            System.out.println("Bases Remain Loaded");
+            System.out.println(OUTS + " outs");
+            System.out.println("Score: " + RUNS + " Runs");
+            break;
+        }
+      
+        return RunnerOnFIRSTBASE && RunnerOnSECONDBASE && RunnerOnTHIRDBASE;
+    } // returns single
+
+    public static boolean doubled() {
+        System.out.println("Nice doinker...\nDouble");
+
+        while // Empty Bases
+                (RunnerOnFIRSTBASE == false && RunnerOnSECONDBASE == false
+                && RunnerOnTHIRDBASE == false) {
+            RunnerOnFIRSTBASE = false;
+            RunnerOnSECONDBASE = true;
+            RunnerOnTHIRDBASE = false;
+            System.out.println("Runner on Second");
+            System.out.println(OUTS + " outs");
+            System.out.println("Score: " + RUNS + " Runs");
+            break;
+        }
+        while // runner on First ONLY
+                (RunnerOnFIRSTBASE == true && RunnerOnSECONDBASE == false
+                && RunnerOnTHIRDBASE == false) {
+            RunnerOnFIRSTBASE = false;
+            RunnerOnSECONDBASE = true;
+            RunnerOnTHIRDBASE = true;
+            System.out.println("Runner on Second & Third");
+            System.out.println(OUTS + " outs");
+            System.out.println("Score: " + RUNS + " Runs");
+            break;
+        }
+        while // runner on Second ONLY
+                (RunnerOnFIRSTBASE == false && RunnerOnSECONDBASE == true
+                && RunnerOnTHIRDBASE == false) {
+
+            RunnerOnFIRSTBASE = false;
+            RunnerOnSECONDBASE = true;
+            RunnerOnTHIRDBASE = false;
+            RUNS = RUNS + 1;
+            System.out.println("Runner Scored!");
+            System.out.println("Runner on Second");
+            System.out.println(OUTS + " outs");
+            System.out.println("Score: " + RUNS + " Runs");
+            break;
+        }
+        while // runner on Third ONLY
+                (RunnerOnFIRSTBASE == false && RunnerOnSECONDBASE == false
+                && RunnerOnTHIRDBASE == true) {
+
+            RunnerOnFIRSTBASE = false;
+            RunnerOnSECONDBASE = true;
+            RunnerOnTHIRDBASE = false;
+            RUNS = RUNS + 1;
+            System.out.println("Runner SCORES!!!!");
+            System.out.println("Runner on Second");
+            System.out.println(OUTS + " outs");
+            System.out.println("Score: " + RUNS + " Runs");
+            break;
+        }
+        while //runner on First and Second
+                (RunnerOnFIRSTBASE == true && RunnerOnSECONDBASE == true
+                && RunnerOnTHIRDBASE == false) {
+            RunnerOnFIRSTBASE = false;
+            RunnerOnSECONDBASE = true;
+            RunnerOnTHIRDBASE = true;
+            RUNS = RUNS + 1;
+            System.out.println("Runner Scored");
+            System.out.println("Runner on Second & Third");
+            System.out.println("Score: " + RUNS + " Runs");
+            System.out.println(OUTS + " outs");
+            break;
+        }
+        while // runners on First and Third
+                (RunnerOnFIRSTBASE == true && RunnerOnSECONDBASE == false
+                && RunnerOnTHIRDBASE == true) {
+            RunnerOnFIRSTBASE = false;
+            RunnerOnSECONDBASE = true;
+            RunnerOnTHIRDBASE = false;
+            RUNS = RUNS + 2;
+            System.out.println("2 Runners scored!");
+            System.out.println("Runner on Second");
+            System.out.println(OUTS + " outs");
+            System.out.println("Score: " + RUNS + " Runs");
+            break;
+        }
+        while // runners on Second and Third
+                (RunnerOnFIRSTBASE == false && RunnerOnSECONDBASE == true
+                && RunnerOnTHIRDBASE == true) {
+            RunnerOnFIRSTBASE = false;
+            RunnerOnSECONDBASE = true;
+            RunnerOnTHIRDBASE = false;
+            RUNS = RUNS + 2;
+            System.out.println("2 runners scored");
+            System.out.println(OUTS + " outs");
+            System.out.println("Score: " + RUNS + " Runs");
+            break;
+        }
+        while // bases loaded
+                (RunnerOnFIRSTBASE == true && RunnerOnSECONDBASE == true
+                && RunnerOnTHIRDBASE == true) {
+            RunnerOnFIRSTBASE = false;
+            RunnerOnSECONDBASE = true;
+            RunnerOnTHIRDBASE = false;
+            RUNS = RUNS + 3;
+            System.out.println("3 runners scored!");
+            System.out.println("Runner on Second");
+            System.out.println(OUTS + " outs");
+            System.out.println("Score: " + RUNS + " Runs");
+            break;
+        }
+        return RunnerOnFIRSTBASE && RunnerOnSECONDBASE && RunnerOnTHIRDBASE;
+    } // returns runner position
+
+    public static boolean triple() {
+        System.out.println("Going... Going... Going...\nWARNING TRACK\nTriple");
+
+        while // Empty Bases
+                (RunnerOnFIRSTBASE == false && RunnerOnSECONDBASE == false
+                && RunnerOnTHIRDBASE == false) {
+            RunnerOnFIRSTBASE = false;
+            RunnerOnSECONDBASE = false;
+            RunnerOnTHIRDBASE = true;
+            System.out.println("Runner on Third");
+            System.out.println(OUTS + " outs");
+            System.out.println("Score: " + RUNS + " Runs");
+            STRIKES = 0; BALLS = 0;
+            break;
+        }
+        while // runner on First ONLY
+                (RunnerOnFIRSTBASE == true && RunnerOnSECONDBASE == false
+                && RunnerOnTHIRDBASE == false) {
+            RunnerOnFIRSTBASE = false;
+            RunnerOnSECONDBASE = false;
+            RunnerOnTHIRDBASE = true;
+            RUNS = RUNS + 1;
+            System.out.println("Runner Scored from First");
+            System.out.println("Runner on Third");
+            System.out.println(OUTS + " outs");
+            System.out.println("Score: " + RUNS + " Runs");
+            STRIKES = 0; BALLS = 0;
+            break;
+        }
+        while // runner on Second ONLY
+                (RunnerOnFIRSTBASE == false && RunnerOnSECONDBASE == true
+                && RunnerOnTHIRDBASE == false) {
+
+            RunnerOnFIRSTBASE = false;
+            RunnerOnSECONDBASE = false;
+            RunnerOnTHIRDBASE = true;
+            RUNS = RUNS + 1;
+            System.out.println("Runner Scored from Second");
+            System.out.println("Runner on Third");
+            System.out.println(OUTS + " outs");
+            System.out.println("Score: " + RUNS + " Runs");
+            STRIKES = 0; BALLS = 0;
+            break;
+        }
+        while // runner on Third ONLY
+                (RunnerOnFIRSTBASE == false && RunnerOnSECONDBASE == false
+                && RunnerOnTHIRDBASE == true) {
+
+            RunnerOnFIRSTBASE = false;
+            RunnerOnSECONDBASE = false;
+            RunnerOnTHIRDBASE = true;
+            RUNS = RUNS + 1;
+            System.out.println("Runner Scores from Third");
+            System.out.println("Runner on Third");
+            System.out.println(OUTS + " outs");
+            System.out.println("Score: " + RUNS + " Runs");
+            STRIKES = 0; BALLS = 0;
+            break;
+        }
+        while //runner on First and Second
+                (RunnerOnFIRSTBASE == true && RunnerOnSECONDBASE == true
+                && RunnerOnTHIRDBASE == false) {
+            RunnerOnFIRSTBASE = false;
+            RunnerOnSECONDBASE = false;
+            RunnerOnTHIRDBASE = true;
+            RUNS = RUNS + 2;
+            System.out.println(" Two Runners Scored");
+            System.out.println("Runner on Third");
+            System.out.println("Score: " + RUNS + " Runs");
+            System.out.println(OUTS + " outs");
+            STRIKES = 0; BALLS = 0;
+            break;
+        }
+        while // runners on First and Third
+                (RunnerOnFIRSTBASE == true && RunnerOnSECONDBASE == false
+                && RunnerOnTHIRDBASE == true) {
+            RunnerOnFIRSTBASE = false;
+            RunnerOnSECONDBASE = false;
+            RunnerOnTHIRDBASE = true;
+            RUNS = RUNS + 2;
+            System.out.println("2 Runners scored!");
+            System.out.println("Runner on Third");
+            System.out.println(OUTS + " outs");
+            System.out.println("Score: " + RUNS + " Runs");
+            STRIKES = 0; BALLS = 0;
+            break;
+        }
+        while // runners on Second and Third
+                (RunnerOnFIRSTBASE == false && RunnerOnSECONDBASE == true
+                && RunnerOnTHIRDBASE == true) {
+            RunnerOnFIRSTBASE = false;
+            RunnerOnSECONDBASE = false;
+            RunnerOnTHIRDBASE = true;
+            RUNS = RUNS + 2;
+            System.out.println("2 runners scored");
+            System.out.println(OUTS + " outs");
+            System.out.println("Score: " + RUNS + " Runs");
+            STRIKES = 0; BALLS = 0;
+            break;
+        }
+        while // bases loaded
+                (RunnerOnFIRSTBASE == true && RunnerOnSECONDBASE == true
+                && RunnerOnTHIRDBASE == true) {
+            RunnerOnFIRSTBASE = false;
+            RunnerOnSECONDBASE = false;
+            RunnerOnTHIRDBASE = true;
+            RUNS = RUNS + 3;
+            System.out.println("3 runners scored!");
+            System.out.println("Runner on Second");
+            System.out.println(OUTS + " outs");
+            System.out.println("Score: " + RUNS + " Runs");
+            STRIKES = 0; BALLS = 0;
+            break;
+        }
+        return RunnerOnFIRSTBASE && RunnerOnSECONDBASE && RunnerOnTHIRDBASE;
+    } // returns runner position
+
+    public static boolean homeRun() {
+        System.out.println("Did anybody see that?\n HOMERUN !!!");
+
+        while // Empty Bases
+                (RunnerOnFIRSTBASE == false && RunnerOnSECONDBASE == false
+                && RunnerOnTHIRDBASE == false) {
+            RunnerOnFIRSTBASE = false;
+            RunnerOnSECONDBASE = false;
+            RunnerOnTHIRDBASE = false;
+            RUNS = RUNS + 1;
+            System.out.println("Solo HR!");
+            System.out.println(OUTS + " outs");
+            System.out.println("Score: " + RUNS + " Runs");
+            System.out.println("Empty Bases");
+            break;
+        }
+        while // runner on First ONLY
+                (RunnerOnFIRSTBASE == true && RunnerOnSECONDBASE == false
+                && RunnerOnTHIRDBASE == false) {
+            RunnerOnFIRSTBASE = false;
+            RunnerOnSECONDBASE = false;
+            RunnerOnTHIRDBASE = false;
+            RUNS = RUNS + 2;
+            System.out.println("Two-Run HR!");
+            System.out.println(OUTS + " outs");
+            System.out.println("Score: " + RUNS + " Runs");
+            System.out.println("Empty Bases");
+            break;
+        }
+        while // runner on Second ONLY
+                (RunnerOnFIRSTBASE == false && RunnerOnSECONDBASE == true
+                && RunnerOnTHIRDBASE == false) {
+
+            RunnerOnFIRSTBASE = false;
+            RunnerOnSECONDBASE = false;
+            RunnerOnTHIRDBASE = false;
+            RUNS = RUNS + 2;
+            System.out.println("Two-Run HR!");
+            System.out.println(OUTS + " outs");
+            System.out.println("Score: " + RUNS + " Runs");
+            System.out.println("Empty Bases");
+            break;
+        }
+        while // runner on Third ONLY
+                (RunnerOnFIRSTBASE == false && RunnerOnSECONDBASE == false
+                && RunnerOnTHIRDBASE == true) {
+
+            RunnerOnFIRSTBASE = false;
+            RunnerOnSECONDBASE = false;
+            RunnerOnTHIRDBASE = false;
+            RUNS = RUNS + 2;
+            System.out.println("Two-Run HR");
+            System.out.println(OUTS + " outs");
+            System.out.println("Score: " + RUNS + " Runs");
+            System.out.println("Empty Bases");
+            break;
+        }
+        while //runner on First and Second
+                (RunnerOnFIRSTBASE == true && RunnerOnSECONDBASE == true
+                && RunnerOnTHIRDBASE == false) {
+            RunnerOnFIRSTBASE = false;
+            RunnerOnSECONDBASE = false;
+            RunnerOnTHIRDBASE = false;
+            RUNS = RUNS + 3;
+            System.out.println("Three-Run HR");
+            System.out.println("Score: " + RUNS + " Runs");
+            System.out.println(OUTS + " outs");
+            System.out.println("Empty Bases");
+            break;
+        }
+        while // runners on First and Third
+                (RunnerOnFIRSTBASE == true && RunnerOnSECONDBASE == false
+                && RunnerOnTHIRDBASE == true) {
+            RunnerOnFIRSTBASE = false;
+            RunnerOnSECONDBASE = false;
+            RunnerOnTHIRDBASE = false;
+            RUNS = RUNS + 3;
+            System.out.println("Three-Run HR");
+            System.out.println(OUTS + " outs");
+            System.out.println("Score: " + RUNS + " Runs");
+            System.out.println("Empty Bases");
+            break;
+        }
+        while // runners on Second and Third
+                (RunnerOnFIRSTBASE == false && RunnerOnSECONDBASE == true
+                && RunnerOnTHIRDBASE == true) {
+            RunnerOnFIRSTBASE = false;
+            RunnerOnSECONDBASE = false;
+            RunnerOnTHIRDBASE = false;
+            RUNS = RUNS + 3;
+            System.out.println("Three-Run HR");
+            System.out.println(OUTS + " outs");
+            System.out.println("Score: " + RUNS + " Runs");
+            System.out.println("Empty Bases");
+            break;
+        }
+        while // bases loaded
+                (RunnerOnFIRSTBASE == true && RunnerOnSECONDBASE == true
+                && RunnerOnTHIRDBASE == true) {
+            RunnerOnFIRSTBASE = false;
+            RunnerOnSECONDBASE = false;
+            RunnerOnTHIRDBASE = false;
+            RUNS = RUNS + 3;
+            System.out.println("GRAND SLAM!!!!");
+            System.out.println(OUTS + " outs");
+            System.out.println("Score: " + RUNS + " Runs");
+            System.out.println("Empty Bases");
+            break;
+        }
+        return RunnerOnFIRSTBASE && RunnerOnSECONDBASE && RunnerOnTHIRDBASE;
+    } // returns runner position
+
+    public static int foul() {
+        System.out.println("FOUL BALL");
+        STRIKES++;
+        System.out.println(BALLS + " balls" + " & " + STRIKES + "strikes");
+        return STRIKES;
+    } // done returns strike
+
+    public static int groundOut() throws InterruptedException {
+        System.out.println("Groundball");
+        Thread.sleep(200);
+        System.out.println("AND...");
+        Thread.sleep(200);
+        System.out.println("Thrown Out at First");
+        OUTS++;
+        STRIKES = 0; BALLS = 0;
+        System.out.println(OUTS + " outs");
+        return OUTS;
+    } // done returns strike
+
+    public static int lineOut() throws InterruptedException {
+        System.out.println("Line-Drive");
+        Thread.sleep(200);
+        System.out.println("AND...");
+        Thread.sleep(200);
+        System.out.println("Caught");
+        OUTS++;STRIKES = 0; BALLS = 0;
+        System.out.println(OUTS + " outs");
+        return OUTS;
+    } // done returns strike
+
+    public static int flyOut() throws InterruptedException {
+        System.out.println("The ball is up");
+        Thread.sleep(200);
+        System.out.println("higher...");
+        Thread.sleep(200);
+        System.out.println("AND...");
+        Thread.sleep(200);
+        System.out.println("Caught! \nFly-Out");
+        OUTS++;
+        STRIKES = 0; BALLS = 0;
+        System.out.println(OUTS + " outs");
+        return OUTS;
+    } // done returns strike
+
+    public static int foulOut() {
+        System.out.println("FOUL BALL");
+        System.out.println("Its Caught!!!");
+        OUTS++;
+        STRIKES = 0; BALLS = 0;
+        System.out.println(OUTS + " outs");
+        return OUTS;
+    } // done returns strike
+
+}
+
+
