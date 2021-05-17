@@ -11,78 +11,122 @@ package slowJams;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
+import slowJams.SoftballPlayer;
 
 /**
  *
  * @author jacob
  */
 public class Start {
-    public ArrayList<SoftballPlayer> ActiveRoster = new ArrayList<>();
-    public ArrayList<Double>BattingAverage = new ArrayList<>();
-    public ArrayList<Double>Hits = new ArrayList<>();
-    public ArrayList<Double>Singles = new ArrayList<>();
-    public ArrayList<Double>Doubles = new ArrayList<>();
-    public ArrayList<Double>Triples = new ArrayList<>();
-    public ArrayList<Double>HomeRuns = new ArrayList<>();
-    public ArrayList<Double>Walks = new ArrayList<>();
-    public ArrayList<Double>OBP = new ArrayList<>();
-    public ArrayList<Double>OpsPlus = new ArrayList<>();
-    public ArrayList<String>battingOrder = new ArrayList<>();
-    public ArrayList<Double>SpeedRank = new ArrayList ();
-    
-    public double bestBA = Collections.max(BattingAverage);
-    public double bestHits = Collections.max(Hits);
-    public double bestSingles = Collections.max(Singles);
-    public double bestDoubles = Collections.max(Doubles);
-    public double bestTriples = Collections.max(Triples);
-    public double bestHr = Collections.max(HomeRuns);
-    public double bestBb = Collections.max(Walks);
-    public double bestOBP = Collections.max(OBP);
-    public double bestOpsPlus = Collections.max(OpsPlus);
-    public double fastest = Collections.min(SpeedRank);
 
-    
+    public ArrayList<SoftballPlayer> ActiveRoster = new ArrayList<>();
+    public ArrayList<Double> BattingAverage = new ArrayList<>();
+    public ArrayList<Double> Hits = new ArrayList<>();
+    public ArrayList<Double> Singles = new ArrayList<>();
+    public ArrayList<Double> Doubles = new ArrayList<>();
+    public ArrayList<Double> Triples = new ArrayList<>();
+    public ArrayList<Double> HomeRuns = new ArrayList<>();
+    public ArrayList<Double> Walks = new ArrayList<>();
+    public ArrayList<Double> OBP = new ArrayList<>();
+    public ArrayList<Double> OpsPlus = new ArrayList<>();
+    public ArrayList<Double> SpeedRank = new ArrayList();
+    public ArrayList<String> battingOrder = new ArrayList<>();
+
     public static void main(String[] args) {
+
+        System.out.println("in main");
         Start fuego = new Start();
-        fuego.checkAttendance();
-        System.out.println("Roster Set");
+        fuego.getRoster();
         Start fuego1 = new Start();
-        fuego1.createBattingOrder();
-                
+        fuego1.checkAttendance();
+        System.out.println("Roster Set");
+        Start fuego2 = new Start();
+        fuego2.createBattingOrder();
+        Start fuego3 = new Start();
+        System.out.println(fuego3.battingOrder.toString());
+
+        
+        
+        
 
     }
 
-    public void checkAttendance(){
-        
-          System.out.println("Will anybody be missing the game today?\nYes or No");
+    public double getbestBA() {
+        double bestBA = Collections.max(BattingAverage);
+        return bestBA;
+    }
+
+    public double getbestHits() {
+        double bestHits = Collections.max(Hits);
+        return bestHits;
+    }
+
+    public double getbestSingles() {
+        double bestSingles = Collections.max(Singles);
+        return bestSingles;
+    }
+
+    public double getbestDoubles() {
+        double bestDoubles = Collections.max(Doubles);
+        return bestDoubles;
+    }
+
+    public double getbestTriples() {
+        double bestTriples = Collections.max(Triples);
+        return bestTriples;
+    }
+
+    public double getBestHr() {
+        double bestHr = Collections.max(HomeRuns);
+        return bestHr;
+    }
+
+    public double getBestWalks() {
+        double bestBb = Collections.max(Walks);
+        return bestBb;
+    }
+
+    public double getBestOBP() {
+        double bestOBP = Collections.max(OBP);
+        return bestOBP;
+    }
+
+    public double getBestOpsPlus() {
+        double bestOpsPlus = Collections.max(OpsPlus);
+        return bestOpsPlus;
+    }
+
+    public void checkAttendance() {
+
+        System.out.println("Will anybody be missing the game today?\nYes or No");
         Scanner anyFlakes = new Scanner(System.in);
         String yayOrNay = anyFlakes.nextLine();
-            System.out.println(yayOrNay);
+        System.out.println(yayOrNay);
 
-    while (yayOrNay.equalsIgnoreCase("no")){
-            System.out.println("Awesome let's take a look at the battting lineup");
+        while (yayOrNay.equalsIgnoreCase("no")) {
+            System.out.println("Awesome let's take a look at the batting lineup");
 
-            break;}
+            break;
+        }
 
-    while (yayOrNay.equalsIgnoreCase("yes")){
+        while (yayOrNay.equalsIgnoreCase("yes")) {
             System.out.println("Please enter First Name of players that"
-                + " are not coming\n Type \"Done\" when done.\nOne At a Time plz");
+                    + " are not coming\n Type \"Done\" when done.\nOne At a Time plz");
             System.out.println("**FOR DEMO**\nAdam, Aly, Courtney, Jake, Marsh,"
                     + " Nate, Niko, Steph, Stephen, Victoria, Will");
-        Scanner notComing = new Scanner(System.in);
-        String dead = notComing.nextLine();
-        Roster team = new Roster();
-        team.benchPlayer(dead);
-        System.out.println("Benched: " + dead);
-        
-    while (dead.equalsIgnoreCase("done")){
-        break;
-    }
-    }} //    closes while yayOrNay
-    
-   
-    
-    public void teamRoster(){
+            Scanner notComing = new Scanner(System.in);
+            String dead = notComing.nextLine();
+            Start team = new Start();
+            team.benchPlayer(dead);
+            System.out.println("Benched: " + dead);
+
+            if (dead.equalsIgnoreCase("done")) {
+                break;
+            }
+        }
+    } //    closes while yayOrNay
+
+    public ArrayList getRoster() {
 
         SoftballPlayer aly = new SoftballPlayer();
         aly.ba = .350;
@@ -96,7 +140,7 @@ public class Start {
         aly.obp = .6;
         aly.opsPlus = 46.542610;
         aly.gender = "female";
-        aly.speed= 1;
+        aly.speed = 1;
         ActiveRoster.add(aly);
         BattingAverage.add(aly.ba);
         Hits.add(aly.hits);
@@ -108,7 +152,6 @@ public class Start {
         OBP.add(aly.obp);
         OpsPlus.add(aly.opsPlus);
         SpeedRank.add(aly.speed);
-
 
         SoftballPlayer jake = new SoftballPlayer();
         jake.name = "Jake";
@@ -159,8 +202,7 @@ public class Start {
         OBP.add(nate.obp);
         OpsPlus.add(nate.opsPlus);
 
-
-    SoftballPlayer niko = new SoftballPlayer();
+        SoftballPlayer niko = new SoftballPlayer();
         niko.name = "Niko";
         niko.ba = .6153846;
         niko.hits = 16;
@@ -184,7 +226,7 @@ public class Start {
         OBP.add(niko.obp);
         OpsPlus.add(niko.opsPlus);
 
-    SoftballPlayer victoria = new SoftballPlayer();
+        SoftballPlayer victoria = new SoftballPlayer();
         victoria.name = "Victoria";
         victoria.ba = .2413793;
         victoria.hits = 7;
@@ -208,9 +250,7 @@ public class Start {
         OBP.add(victoria.obp);
         OpsPlus.add(victoria.opsPlus);
 
-
-
-    SoftballPlayer will = new SoftballPlayer();
+        SoftballPlayer will = new SoftballPlayer();
         will.name = "Will";
         will.ba = .5;
         will.hits = 15;
@@ -234,8 +274,7 @@ public class Start {
         OBP.add(will.obp);
         OpsPlus.add(will.opsPlus);
 
-
-    SoftballPlayer adam = new SoftballPlayer();
+        SoftballPlayer adam = new SoftballPlayer();
         adam.name = "Adam";
         adam.ba = .6;
         adam.hits = 18;
@@ -248,6 +287,7 @@ public class Start {
         adam.opsPlus = 173.278441;
         adam.gender = "male";
         adam.speed = 7;
+
         ActiveRoster.add(adam);
         BattingAverage.add(adam.ba);
         Hits.add(adam.hits);
@@ -259,9 +299,7 @@ public class Start {
         OBP.add(adam.obp);
         OpsPlus.add(adam.opsPlus);
 
-
-
-    SoftballPlayer marsh = new SoftballPlayer();
+        SoftballPlayer marsh = new SoftballPlayer();
         marsh.name = "Marsh";
         marsh.ba = .333;
         marsh.hits = 5;
@@ -285,9 +323,7 @@ public class Start {
         OBP.add(marsh.obp);
         OpsPlus.add(marsh.opsPlus);
 
-
-
-    SoftballPlayer courtney = new SoftballPlayer();
+        SoftballPlayer courtney = new SoftballPlayer();
         courtney.name = "Courtney";
         courtney.ba = 0;
         courtney.hits = 0;
@@ -300,6 +336,7 @@ public class Start {
         courtney.opsPlus = 0;
         courtney.gender = "female";
         courtney.speed = 5;
+
         ActiveRoster.add(courtney);
         BattingAverage.add(courtney.ba);
         Hits.add(courtney.hits);
@@ -311,7 +348,7 @@ public class Start {
         OBP.add(courtney.obp);
         OpsPlus.add(courtney.opsPlus);
 
-    SoftballPlayer steph = new SoftballPlayer();
+        SoftballPlayer steph = new SoftballPlayer();
         steph.name = "Steph";
         steph.ba = 0;
         steph.hits = 0;
@@ -324,6 +361,7 @@ public class Start {
         steph.opsPlus = 0;
         steph.gender = "female";
         steph.speed = 4;
+
         ActiveRoster.add(steph);
         BattingAverage.add(steph.ba);
         Hits.add(steph.hits);
@@ -335,8 +373,7 @@ public class Start {
         OBP.add(steph.obp);
         OpsPlus.add(steph.opsPlus);
 
-
-    SoftballPlayer stephen = new SoftballPlayer();
+        SoftballPlayer stephen = new SoftballPlayer();
         stephen.name = "Stephen";
         stephen.ba = .4814815;
         stephen.hits = 13;
@@ -349,6 +386,7 @@ public class Start {
         stephen.opsPlus = 92.641308;
         stephen.gender = "male";
         stephen.speed = 10;
+
         ActiveRoster.add(stephen);
         BattingAverage.add(stephen.ba);
         Hits.add(stephen.hits);
@@ -359,240 +397,231 @@ public class Start {
         Walks.add(stephen.bb);
         OBP.add(stephen.obp);
         OpsPlus.add(stephen.opsPlus);
+        
+        return ActiveRoster;
+    }
 
-} // creates SoftballPlayers, ArrayLists, and  stats
-
-    public void benchPlayer(String dead){
+    public void benchPlayer(String dead) {
 //removing player who is not coming to the game from Active Roster
 
         ActiveRoster.stream(). // batting 2nd
-        filter(SoftballPlayer -> (SoftballPlayer.name.equalsIgnoreCase
-        (dead)))
-            .forEachOrdered(SoftballPlayer -> {
-            ActiveRoster.remove(SoftballPlayer);
-            BattingAverage.remove(SoftballPlayer.ba);
-            Hits.remove(SoftballPlayer.hits);
-            Singles.remove(SoftballPlayer.singles);
-            Doubles.remove(SoftballPlayer.doubles);
-            Triples.remove(SoftballPlayer.triples);
-            HomeRuns.remove(SoftballPlayer.hr);
-            Walks.remove(SoftballPlayer.bb);
-            OBP.remove(SoftballPlayer.obp);
-            OpsPlus.remove(SoftballPlayer.opsPlus);
-            SpeedRank.remove(SoftballPlayer.speed);
-            });
+                filter(SoftballPlayer -> (SoftballPlayer.name.equalsIgnoreCase(dead)))
+                .forEachOrdered(SoftballPlayer -> {
+                    ActiveRoster.remove(SoftballPlayer);
+                    BattingAverage.remove(SoftballPlayer.ba);
+                    Hits.remove(SoftballPlayer.hits);
+                    Singles.remove(SoftballPlayer.singles);
+                    Doubles.remove(SoftballPlayer.doubles);
+                    Triples.remove(SoftballPlayer.triples);
+                    HomeRuns.remove(SoftballPlayer.hr);
+                    Walks.remove(SoftballPlayer.bb);
+                    OBP.remove(SoftballPlayer.obp);
+                    OpsPlus.remove(SoftballPlayer.opsPlus);
+                    SpeedRank.remove(SoftballPlayer.speed);
+                });
     }
 
     public ArrayList<String> createBattingOrder() {
 
-
         ActiveRoster.stream(). // batting 1st
-        filter(speed -> (SpeedRank.equals(fastest)))
-        .forEachOrdered(SoftballPlayer -> {
-        battingOrder.add(SoftballPlayer.name);
-        ActiveRoster.remove(SoftballPlayer);
-        BattingAverage.remove(SoftballPlayer.ba);
-        Hits.remove(SoftballPlayer.hits);
-        Singles.remove(SoftballPlayer.singles);
-        Doubles.remove(SoftballPlayer.doubles);
-        Triples.remove(SoftballPlayer.triples);
-        HomeRuns.remove(SoftballPlayer.hr);
-        Walks.remove(SoftballPlayer.bb);
-        OBP.remove(SoftballPlayer.obp);
-        OpsPlus.remove(SoftballPlayer.opsPlus);
-        SpeedRank.remove(SoftballPlayer.speed);
-            });
+                filter(ba -> (BattingAverage.equals(getbestBA())))
+                .forEachOrdered(SoftballPlayer -> {
+                    battingOrder.add(SoftballPlayer.name);
+                    ActiveRoster.remove(SoftballPlayer);
+                    BattingAverage.remove(SoftballPlayer.ba);
+                    Hits.remove(SoftballPlayer.hits);
+                    Singles.remove(SoftballPlayer.singles);
+                    Doubles.remove(SoftballPlayer.doubles);
+                    Triples.remove(SoftballPlayer.triples);
+                    HomeRuns.remove(SoftballPlayer.hr);
+                    Walks.remove(SoftballPlayer.bb);
+                    OBP.remove(SoftballPlayer.obp);
+                    OpsPlus.remove(SoftballPlayer.opsPlus);
+                    SpeedRank.remove(SoftballPlayer.speed);
+                });
         ActiveRoster.stream(). // batting 2nd
-        filter(ba -> (BattingAverage.equals(bestBA)))
-        .forEachOrdered(SoftballPlayer -> {
-        battingOrder.add(SoftballPlayer.name);
-        ActiveRoster.remove(SoftballPlayer);
-        BattingAverage.remove(SoftballPlayer.ba);
-        Hits.remove(SoftballPlayer.hits);
-        Singles.remove(SoftballPlayer.singles);
-        Doubles.remove(SoftballPlayer.doubles);
-        Triples.remove(SoftballPlayer.triples);
-        HomeRuns.remove(SoftballPlayer.hr);
-        Walks.remove(SoftballPlayer.bb);
-        OBP.remove(SoftballPlayer.obp);
-        OpsPlus.remove(SoftballPlayer.opsPlus);
-        SpeedRank.remove(SoftballPlayer.speed);
-            });
+                filter(ba -> (BattingAverage.equals(getbestBA())))
+                .forEachOrdered(SoftballPlayer -> {
+                    battingOrder.add(SoftballPlayer.name);
+                    ActiveRoster.remove(SoftballPlayer);
+                    BattingAverage.remove(SoftballPlayer.ba);
+                    Hits.remove(SoftballPlayer.hits);
+                    Singles.remove(SoftballPlayer.singles);
+                    Doubles.remove(SoftballPlayer.doubles);
+                    Triples.remove(SoftballPlayer.triples);
+                    HomeRuns.remove(SoftballPlayer.hr);
+                    Walks.remove(SoftballPlayer.bb);
+                    OBP.remove(SoftballPlayer.obp);
+                    OpsPlus.remove(SoftballPlayer.opsPlus);
+                    SpeedRank.remove(SoftballPlayer.speed);
+                });
 
         ActiveRoster.stream(). // batting 3rd
-        filter(doubles -> (Doubles.equals(bestDoubles)))
-        .forEachOrdered(SoftballPlayer -> {
-        battingOrder.add(SoftballPlayer.name);
-        ActiveRoster.remove(SoftballPlayer);
-        BattingAverage.remove(SoftballPlayer.ba);
-        Hits.remove(SoftballPlayer.hits);
-        Singles.remove(SoftballPlayer.singles);
-        Doubles.remove(SoftballPlayer.doubles);
-        Triples.remove(SoftballPlayer.triples);
-        HomeRuns.remove(SoftballPlayer.hr);
-        Walks.remove(SoftballPlayer.bb);
-        OBP.remove(SoftballPlayer.obp);
-        OpsPlus.remove(SoftballPlayer.opsPlus);
-        SpeedRank.remove(SoftballPlayer.speed);
-            });
+                filter(Doubles -> (Doubles.equals(getbestDoubles())))
+                .forEachOrdered(SoftballPlayer -> {
+                    battingOrder.add(SoftballPlayer.name);
+                    ActiveRoster.remove(SoftballPlayer);
+                    BattingAverage.remove(SoftballPlayer.ba);
+                    Hits.remove(SoftballPlayer.hits);
+                    Singles.remove(SoftballPlayer.singles);
+                    Doubles.remove(SoftballPlayer.doubles);
+                    Triples.remove(SoftballPlayer.triples);
+                    HomeRuns.remove(SoftballPlayer.hr);
+                    Walks.remove(SoftballPlayer.bb);
+                    OBP.remove(SoftballPlayer.obp);
+                    OpsPlus.remove(SoftballPlayer.opsPlus);
+                    SpeedRank.remove(SoftballPlayer.speed);
+                });
         ActiveRoster.stream(). // batting 4th
-        filter(triples -> (Triples.equals(bestTriples)))
-        .forEachOrdered(SoftballPlayer -> {
-        battingOrder.add(SoftballPlayer.name);
-        ActiveRoster.remove(SoftballPlayer);
-        BattingAverage.remove(SoftballPlayer.ba);
-        Hits.remove(SoftballPlayer.hits);
-        Singles.remove(SoftballPlayer.singles);
-        Doubles.remove(SoftballPlayer.doubles);
-        Triples.remove(SoftballPlayer.triples);
-        HomeRuns.remove(SoftballPlayer.hr);
-        Walks.remove(SoftballPlayer.bb);
-        OBP.remove(SoftballPlayer.obp);
-        OpsPlus.remove(SoftballPlayer.opsPlus);
-        SpeedRank.remove(SoftballPlayer.speed);
-            });
+                filter(Triples -> (Triples.equals(getbestTriples())))
+                .forEachOrdered(SoftballPlayer -> {
+                    battingOrder.add(SoftballPlayer.name);
+                    ActiveRoster.remove(SoftballPlayer);
+                    BattingAverage.remove(SoftballPlayer.ba);
+                    Hits.remove(SoftballPlayer.hits);
+                    Singles.remove(SoftballPlayer.singles);
+                    Doubles.remove(SoftballPlayer.doubles);
+                    Triples.remove(SoftballPlayer.triples);
+                    HomeRuns.remove(SoftballPlayer.hr);
+                    Walks.remove(SoftballPlayer.bb);
+                    OBP.remove(SoftballPlayer.obp);
+                    OpsPlus.remove(SoftballPlayer.opsPlus);
+                    SpeedRank.remove(SoftballPlayer.speed);
+                });
         ActiveRoster.stream(). // batting 5th
-        filter(ba -> (BattingAverage.equals(bestBA)))
-        .forEachOrdered(SoftballPlayer -> {
-        battingOrder.add(SoftballPlayer.name);
-        ActiveRoster.remove(SoftballPlayer);
-        BattingAverage.remove(SoftballPlayer.ba);
-        Hits.remove(SoftballPlayer.hits);
-        Singles.remove(SoftballPlayer.singles);
-        Doubles.remove(SoftballPlayer.doubles);
-        Triples.remove(SoftballPlayer.triples);
-        HomeRuns.remove(SoftballPlayer.hr);
-        Walks.remove(SoftballPlayer.bb);
-        OBP.remove(SoftballPlayer.obp);
-        OpsPlus.remove(SoftballPlayer.opsPlus);
-        SpeedRank.remove(SoftballPlayer.speed);
-            });
+                filter(ba -> (BattingAverage.equals(getbestBA())))
+                .forEachOrdered(SoftballPlayer -> {
+                    battingOrder.add(SoftballPlayer.name);
+                    ActiveRoster.remove(SoftballPlayer);
+                    BattingAverage.remove(SoftballPlayer.ba);
+                    Hits.remove(SoftballPlayer.hits);
+                    Singles.remove(SoftballPlayer.singles);
+                    Doubles.remove(SoftballPlayer.doubles);
+                    Triples.remove(SoftballPlayer.triples);
+                    HomeRuns.remove(SoftballPlayer.hr);
+                    Walks.remove(SoftballPlayer.bb);
+                    OBP.remove(SoftballPlayer.obp);
+                    OpsPlus.remove(SoftballPlayer.opsPlus);
+                    SpeedRank.remove(SoftballPlayer.speed);
+                });
         ActiveRoster.stream(). // batting 6th
-        filter(obp -> (OBP.equals(bestOBP)))
-        .forEachOrdered(SoftballPlayer -> {
-        battingOrder.add(SoftballPlayer.name);
-        ActiveRoster.remove(SoftballPlayer);
-        BattingAverage.remove(SoftballPlayer.ba);
-        Hits.remove(SoftballPlayer.hits);
-        Singles.remove(SoftballPlayer.singles);
-        Doubles.remove(SoftballPlayer.doubles);
-        Triples.remove(SoftballPlayer.triples);
-        HomeRuns.remove(SoftballPlayer.hr);
-        Walks.remove(SoftballPlayer.bb);
-        OBP.remove(SoftballPlayer.obp);
-        OpsPlus.remove(SoftballPlayer.opsPlus);
-        SpeedRank.remove(SoftballPlayer.speed);
-            });
+                filter(OBP -> (OBP.equals(getBestOBP())))
+                .forEachOrdered(SoftballPlayer -> {
+                    battingOrder.add(SoftballPlayer.name);
+                    ActiveRoster.remove(SoftballPlayer);
+                    BattingAverage.remove(SoftballPlayer.ba);
+                    Hits.remove(SoftballPlayer.hits);
+                    Singles.remove(SoftballPlayer.singles);
+                    Doubles.remove(SoftballPlayer.doubles);
+                    Triples.remove(SoftballPlayer.triples);
+                    HomeRuns.remove(SoftballPlayer.hr);
+                    Walks.remove(SoftballPlayer.bb);
+                    OBP.remove(SoftballPlayer.obp);
+                    OpsPlus.remove(SoftballPlayer.opsPlus);
+                    SpeedRank.remove(SoftballPlayer.speed);
+                });
         ActiveRoster.stream(). // batting 7th
-        filter(speed -> (SpeedRank.equals(fastest)))
-        .forEachOrdered(SoftballPlayer -> {
-        battingOrder.add(SoftballPlayer.name);
-        ActiveRoster.remove(SoftballPlayer);
-        BattingAverage.remove(SoftballPlayer.ba);
-        Hits.remove(SoftballPlayer.hits);
-        Singles.remove(SoftballPlayer.singles);
-        Doubles.remove(SoftballPlayer.doubles);
-        Triples.remove(SoftballPlayer.triples);
-        HomeRuns.remove(SoftballPlayer.hr);
-        Walks.remove(SoftballPlayer.bb);
-        OBP.remove(SoftballPlayer.obp);
-        OpsPlus.remove(SoftballPlayer.opsPlus);
-        SpeedRank.remove(SoftballPlayer.speed);
-            });
+                filter(ba -> (BattingAverage.equals(getbestBA())))
+                .forEachOrdered(SoftballPlayer -> {
+                    battingOrder.add(SoftballPlayer.name);
+                    ActiveRoster.remove(SoftballPlayer);
+                    BattingAverage.remove(SoftballPlayer.ba);
+                    Hits.remove(SoftballPlayer.hits);
+                    Singles.remove(SoftballPlayer.singles);
+                    Doubles.remove(SoftballPlayer.doubles);
+                    Triples.remove(SoftballPlayer.triples);
+                    HomeRuns.remove(SoftballPlayer.hr);
+                    Walks.remove(SoftballPlayer.bb);
+                    OBP.remove(SoftballPlayer.obp);
+                    OpsPlus.remove(SoftballPlayer.opsPlus);
+                    SpeedRank.remove(SoftballPlayer.speed);
+                });
         ActiveRoster.stream(). // batting 8th
-        filter(opsPlus -> (OpsPlus.equals(bestOpsPlus)))
-        .forEachOrdered(SoftballPlayer -> {
-        battingOrder.add(SoftballPlayer.name);
-        ActiveRoster.remove(SoftballPlayer);
-        BattingAverage.remove(SoftballPlayer.ba);
-        Hits.remove(SoftballPlayer.hits);
-        Singles.remove(SoftballPlayer.singles);
-        Doubles.remove(SoftballPlayer.doubles);
-        Triples.remove(SoftballPlayer.triples);
-        HomeRuns.remove(SoftballPlayer.hr);
-        Walks.remove(SoftballPlayer.bb);
-        OBP.remove(SoftballPlayer.obp);
-        OpsPlus.remove(SoftballPlayer.opsPlus);
-        SpeedRank.remove(SoftballPlayer.speed);
-            });
+                filter(OpsPlus -> (OpsPlus.equals(getBestOpsPlus())))
+                .forEachOrdered(SoftballPlayer -> {
+                    battingOrder.add(SoftballPlayer.name);
+                    ActiveRoster.remove(SoftballPlayer);
+                    BattingAverage.remove(SoftballPlayer.ba);
+                    Hits.remove(SoftballPlayer.hits);
+                    Singles.remove(SoftballPlayer.singles);
+                    Doubles.remove(SoftballPlayer.doubles);
+                    Triples.remove(SoftballPlayer.triples);
+                    HomeRuns.remove(SoftballPlayer.hr);
+                    Walks.remove(SoftballPlayer.bb);
+                    OBP.remove(SoftballPlayer.obp);
+                    OpsPlus.remove(SoftballPlayer.opsPlus);
+                    SpeedRank.remove(SoftballPlayer.speed);
+                });
         ActiveRoster.stream(). // batting 1st
-        filter(ba -> (BattingAverage.equals(bestBA)))
-        .forEachOrdered(SoftballPlayer -> {
-        battingOrder.add(SoftballPlayer.name);
-        ActiveRoster.remove(SoftballPlayer);
-        BattingAverage.remove(SoftballPlayer.ba);
-        Hits.remove(SoftballPlayer.hits);
-        Singles.remove(SoftballPlayer.singles);
-        Doubles.remove(SoftballPlayer.doubles);
-        Triples.remove(SoftballPlayer.triples);
-        HomeRuns.remove(SoftballPlayer.hr);
-        Walks.remove(SoftballPlayer.bb);
-        OBP.remove(SoftballPlayer.obp);
-        OpsPlus.remove(SoftballPlayer.opsPlus);
-        SpeedRank.remove(SoftballPlayer.speed);
-            });
+                filter(ba -> (BattingAverage.equals(getbestBA())))
+                .forEachOrdered(SoftballPlayer -> {
+                    battingOrder.add(SoftballPlayer.name);
+                    ActiveRoster.remove(SoftballPlayer);
+                    BattingAverage.remove(SoftballPlayer.ba);
+                    Hits.remove(SoftballPlayer.hits);
+                    Singles.remove(SoftballPlayer.singles);
+                    Doubles.remove(SoftballPlayer.doubles);
+                    Triples.remove(SoftballPlayer.triples);
+                    HomeRuns.remove(SoftballPlayer.hr);
+                    Walks.remove(SoftballPlayer.bb);
+                    OBP.remove(SoftballPlayer.obp);
+                    OpsPlus.remove(SoftballPlayer.opsPlus);
+                    SpeedRank.remove(SoftballPlayer.speed);
+                });
         ActiveRoster.stream(). // batting 1st
-        filter(ba -> (BattingAverage.equals(bestBA)))
-        .forEachOrdered(SoftballPlayer -> {
-        battingOrder.add(SoftballPlayer.name);
-        ActiveRoster.remove(SoftballPlayer);
-        BattingAverage.remove(SoftballPlayer.ba);
-        Hits.remove(SoftballPlayer.hits);
-        Singles.remove(SoftballPlayer.singles);
-        Doubles.remove(SoftballPlayer.doubles);
-        Triples.remove(SoftballPlayer.triples);
-        HomeRuns.remove(SoftballPlayer.hr);
-        Walks.remove(SoftballPlayer.bb);
-        OBP.remove(SoftballPlayer.obp);
-        OpsPlus.remove(SoftballPlayer.opsPlus);
-        SpeedRank.remove(SoftballPlayer.speed);
-            });
+                filter(Singles -> (Singles.equals(getbestSingles())))
+                .forEachOrdered(SoftballPlayer -> {
+                    battingOrder.add(SoftballPlayer.name);
+                    ActiveRoster.remove(SoftballPlayer);
+                    BattingAverage.remove(SoftballPlayer.ba);
+                    Hits.remove(SoftballPlayer.hits);
+                    Singles.remove(SoftballPlayer.singles);
+                    Doubles.remove(SoftballPlayer.doubles);
+                    Triples.remove(SoftballPlayer.triples);
+                    HomeRuns.remove(SoftballPlayer.hr);
+                    Walks.remove(SoftballPlayer.bb);
+                    OBP.remove(SoftballPlayer.obp);
+                    OpsPlus.remove(SoftballPlayer.opsPlus);
+                    SpeedRank.remove(SoftballPlayer.speed);
+                });
         ActiveRoster.stream(). // batting 1st
-        filter(ba -> (BattingAverage.equals(bestBA)))
-        .forEachOrdered(SoftballPlayer -> {
-        battingOrder.add(SoftballPlayer.name);
-        ActiveRoster.remove(SoftballPlayer);
-        BattingAverage.remove(SoftballPlayer.ba);
-        Hits.remove(SoftballPlayer.hits);
-        Singles.remove(SoftballPlayer.singles);
-        Doubles.remove(SoftballPlayer.doubles);
-        Triples.remove(SoftballPlayer.triples);
-        HomeRuns.remove(SoftballPlayer.hr);
-        Walks.remove(SoftballPlayer.bb);
-        OBP.remove(SoftballPlayer.obp);
-        OpsPlus.remove(SoftballPlayer.opsPlus);
-        SpeedRank.remove(SoftballPlayer.speed);
-            });
+                filter(ba -> (BattingAverage.equals(getbestBA())))
+                .forEachOrdered(SoftballPlayer -> {
+                    battingOrder.add(SoftballPlayer.name);
+                    ActiveRoster.remove(SoftballPlayer);
+                    BattingAverage.remove(SoftballPlayer.ba);
+                    Hits.remove(SoftballPlayer.hits);
+                    Singles.remove(SoftballPlayer.singles);
+                    Doubles.remove(SoftballPlayer.doubles);
+                    Triples.remove(SoftballPlayer.triples);
+                    HomeRuns.remove(SoftballPlayer.hr);
+                    Walks.remove(SoftballPlayer.bb);
+                    OBP.remove(SoftballPlayer.obp);
+                    OpsPlus.remove(SoftballPlayer.opsPlus);
+                    SpeedRank.remove(SoftballPlayer.speed);
+                });
 
         ActiveRoster.stream(). // batting 1st
-        filter(speed -> (SpeedRank.equals(fastest)))
-        .forEachOrdered(SoftballPlayer -> {
-        battingOrder.add(SoftballPlayer.name);
-        ActiveRoster.remove(SoftballPlayer);
-        BattingAverage.remove(SoftballPlayer.ba);
-        Hits.remove(SoftballPlayer.hits);
-        Singles.remove(SoftballPlayer.singles);
-        Doubles.remove(SoftballPlayer.doubles);
-        Triples.remove(SoftballPlayer.triples);
-        HomeRuns.remove(SoftballPlayer.hr);
-        Walks.remove(SoftballPlayer.bb);
-        OBP.remove(SoftballPlayer.obp);
-        OpsPlus.remove(SoftballPlayer.opsPlus);
-        SpeedRank.remove(SoftballPlayer.speed);
-            });
+                filter(ba -> (BattingAverage.equals(getbestBA())))
+                .forEachOrdered(SoftballPlayer -> {
+                    battingOrder.add(SoftballPlayer.name);
+                    ActiveRoster.remove(SoftballPlayer);
+                    BattingAverage.remove(SoftballPlayer.ba);
+                    Hits.remove(SoftballPlayer.hits);
+                    Singles.remove(SoftballPlayer.singles);
+                    Doubles.remove(SoftballPlayer.doubles);
+                    Triples.remove(SoftballPlayer.triples);
+                    HomeRuns.remove(SoftballPlayer.hr);
+                    Walks.remove(SoftballPlayer.bb);
+                    OBP.remove(SoftballPlayer.obp);
+                    OpsPlus.remove(SoftballPlayer.opsPlus);
+                    SpeedRank.remove(SoftballPlayer.speed);
+                });
 
-   return battingOrder; }
-
-
-
+        return battingOrder;
+    }
 
 }
-    
-        
-    
 
-
-
-       // closes class Start
-
+// closes class Start
 
